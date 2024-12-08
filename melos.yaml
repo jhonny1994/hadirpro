@@ -1,0 +1,12 @@
+name: hadirpro
+repository: https://github.com/jhonny1994/hadirpro
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  analyze:
+    run: melos exec -- "flutter analyze"
+  refresh:
+    run: melos exec -- "flutter clean && flutter clean cache && flutter pub get"
