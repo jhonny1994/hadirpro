@@ -30,9 +30,6 @@ class MainApp extends ConsumerWidget {
     return MaterialApp.router(
       routerConfig: router,
       theme: AppTheme.getTheme(themeMode),
-      routerDelegate: router.routerDelegate,
-      routeInformationParser: router.routeInformationParser,
-      routeInformationProvider: router.routeInformationProvider,
     );
   }
 }

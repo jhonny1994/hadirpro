@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hadirpro/features/onboarding/onboarding.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
+    debugLogDiagnostics: true,
     navigatorKey: navigatorKey,
+    initialLocation: '/loading',
     routes: <RouteBase>[
-      GoRoute(
-        path: '/',
-        builder: (BuildContext context, GoRouterState state) =>
-            const SizedBox(),
-      ),
       GoRoute(
         path: '/login/teacher',
         builder: (BuildContext context, GoRouterState state) =>
@@ -26,7 +24,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/onboarding',
         builder: (BuildContext context, GoRouterState state) =>
-            const SizedBox(),
+            const OnboardingScreen(),
       ),
       GoRoute(
         path: '/dashboard/teacher',
@@ -43,6 +41,19 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (BuildContext context, GoRouterState state) =>
             const SizedBox(),
       ),
+      GoRoute(
+        path: '/loading',
+        builder: (BuildContext context, GoRouterState state) =>
+            const CircularProgressIndicator.adaptive(),
+      ),
     ],
+    redirect: (context, state) {
+      final isBoarded = ref.watch(onboardingProvider);
+      if (isBoarded) {
+        return '/login/teacher';
+      } else {
+        return '/onboarding';
+      }
+    },
   );
 });
