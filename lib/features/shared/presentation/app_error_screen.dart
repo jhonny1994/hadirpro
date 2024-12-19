@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hadirpro/features/authentication/authentication.dart';
 import 'package:hadirpro/features/shared/localization/generated/l10n.dart';
 
@@ -17,8 +16,8 @@ class AppErrorScreen extends ConsumerWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 8,
-            vertical: 16,
+            horizontal: 16,
+            vertical: 8,
           ),
           child: Column(
             children: [
@@ -30,10 +29,7 @@ class AppErrorScreen extends ConsumerWidget {
               const Spacer(),
               ErrorInfo(
                 description: errorMessage,
-                press: () {
-                  ref.read(authProvider.notifier).clearError();
-                  context.pushReplacement('/login');
-                },
+                press: () => ref.read(authProvider.notifier).checkAuthStatus(),
               ),
               const Spacer(flex: 2),
             ],

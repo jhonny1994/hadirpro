@@ -32,31 +32,32 @@ mixin _$User {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get role => throw _privateConstructorUsedError;
+  UserRole get role => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id, String email, String name, int studentId, String role)
+            String id, String email, String name, int studentId, UserRole role)
         student,
-    required TResult Function(String id, String email, String name, String role)
+    required TResult Function(
+            String id, String email, String name, UserRole role)
         teacher,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String id, String email, String name, int studentId, String role)?
+            String id, String email, String name, int studentId, UserRole role)?
         student,
-    TResult? Function(String id, String email, String name, String role)?
+    TResult? Function(String id, String email, String name, UserRole role)?
         teacher,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String id, String email, String name, int studentId, String role)?
+            String id, String email, String name, int studentId, UserRole role)?
         student,
-    TResult Function(String id, String email, String name, String role)?
+    TResult Function(String id, String email, String name, UserRole role)?
         teacher,
     required TResult orElse(),
   }) =>
@@ -95,7 +96,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String id, String email, String name, String role});
+  $Res call({String id, String email, String name, UserRole role});
 }
 
 /// @nodoc
@@ -134,7 +135,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ) as $Val);
   }
 }
@@ -146,7 +147,8 @@ abstract class _$$StudentImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$StudentImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String email, String name, int studentId, String role});
+  $Res call(
+      {String id, String email, String name, int studentId, UserRole role});
 }
 
 /// @nodoc
@@ -188,7 +190,7 @@ class __$$StudentImplCopyWithImpl<$Res>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ));
   }
 }
@@ -201,7 +203,7 @@ class _$StudentImpl implements Student {
       required this.email,
       required this.name,
       required this.studentId,
-      this.role = 'student',
+      this.role = UserRole.student,
       final String? $type})
       : $type = $type ?? 'student';
 
@@ -218,7 +220,7 @@ class _$StudentImpl implements Student {
   final int studentId;
   @override
   @JsonKey()
-  final String role;
+  final UserRole role;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -258,9 +260,10 @@ class _$StudentImpl implements Student {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id, String email, String name, int studentId, String role)
+            String id, String email, String name, int studentId, UserRole role)
         student,
-    required TResult Function(String id, String email, String name, String role)
+    required TResult Function(
+            String id, String email, String name, UserRole role)
         teacher,
   }) {
     return student(id, email, name, studentId, role);
@@ -270,9 +273,9 @@ class _$StudentImpl implements Student {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String id, String email, String name, int studentId, String role)?
+            String id, String email, String name, int studentId, UserRole role)?
         student,
-    TResult? Function(String id, String email, String name, String role)?
+    TResult? Function(String id, String email, String name, UserRole role)?
         teacher,
   }) {
     return student?.call(id, email, name, studentId, role);
@@ -282,9 +285,9 @@ class _$StudentImpl implements Student {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String id, String email, String name, int studentId, String role)?
+            String id, String email, String name, int studentId, UserRole role)?
         student,
-    TResult Function(String id, String email, String name, String role)?
+    TResult Function(String id, String email, String name, UserRole role)?
         teacher,
     required TResult orElse(),
   }) {
@@ -339,7 +342,7 @@ abstract class Student implements User {
       required final String email,
       required final String name,
       required final int studentId,
-      final String role}) = _$StudentImpl;
+      final UserRole role}) = _$StudentImpl;
 
   factory Student.fromJson(Map<String, dynamic> json) = _$StudentImpl.fromJson;
 
@@ -351,7 +354,7 @@ abstract class Student implements User {
   String get name;
   int get studentId;
   @override
-  String get role;
+  UserRole get role;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -368,7 +371,7 @@ abstract class _$$TeacherImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$TeacherImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String email, String name, String role});
+  $Res call({String id, String email, String name, UserRole role});
 }
 
 /// @nodoc
@@ -405,7 +408,7 @@ class __$$TeacherImplCopyWithImpl<$Res>
       role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String,
+              as UserRole,
     ));
   }
 }
@@ -417,7 +420,7 @@ class _$TeacherImpl implements Teacher {
       {required this.id,
       required this.email,
       required this.name,
-      this.role = 'teacher',
+      this.role = UserRole.teacher,
       final String? $type})
       : $type = $type ?? 'teacher';
 
@@ -432,7 +435,7 @@ class _$TeacherImpl implements Teacher {
   final String name;
   @override
   @JsonKey()
-  final String role;
+  final UserRole role;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
@@ -469,9 +472,10 @@ class _$TeacherImpl implements Teacher {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String id, String email, String name, int studentId, String role)
+            String id, String email, String name, int studentId, UserRole role)
         student,
-    required TResult Function(String id, String email, String name, String role)
+    required TResult Function(
+            String id, String email, String name, UserRole role)
         teacher,
   }) {
     return teacher(id, email, name, role);
@@ -481,9 +485,9 @@ class _$TeacherImpl implements Teacher {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String id, String email, String name, int studentId, String role)?
+            String id, String email, String name, int studentId, UserRole role)?
         student,
-    TResult? Function(String id, String email, String name, String role)?
+    TResult? Function(String id, String email, String name, UserRole role)?
         teacher,
   }) {
     return teacher?.call(id, email, name, role);
@@ -493,9 +497,9 @@ class _$TeacherImpl implements Teacher {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(
-            String id, String email, String name, int studentId, String role)?
+            String id, String email, String name, int studentId, UserRole role)?
         student,
-    TResult Function(String id, String email, String name, String role)?
+    TResult Function(String id, String email, String name, UserRole role)?
         teacher,
     required TResult orElse(),
   }) {
@@ -549,7 +553,7 @@ abstract class Teacher implements User {
       {required final String id,
       required final String email,
       required final String name,
-      final String role}) = _$TeacherImpl;
+      final UserRole role}) = _$TeacherImpl;
 
   factory Teacher.fromJson(Map<String, dynamic> json) = _$TeacherImpl.fromJson;
 
@@ -560,7 +564,7 @@ abstract class Teacher implements User {
   @override
   String get name;
   @override
-  String get role;
+  UserRole get role;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.

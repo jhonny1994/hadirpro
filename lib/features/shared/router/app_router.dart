@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hadirpro/features/authentication/authentication.dart';
+import 'package:hadirpro/features/authentication/presentation/verification_screen.dart';
 import 'package:hadirpro/features/onboarding/onboarding.dart';
 import 'package:hadirpro/features/shared/shared.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    debugLogDiagnostics: true,
-    initialLocation: '/dashboard',
+    initialLocation: '/loading',
     routes: <RouteBase>[
       GoRoute(
         path: '/login',
@@ -33,13 +33,16 @@ final routerProvider = Provider<GoRouter>((ref) {
             const OnboardingScreen(),
       ),
       GoRoute(
-        path: '/dashboard',
+        path: '/dashboard/:role',
         builder: (BuildContext context, GoRouterState state) {
-          final authState = ref.read(authProvider);
-          return authState.user!.map(
-            student: (_) => const SizedBox(),
-            teacher: (_) => const SizedBox(),
-          );
+          final role = state.pathParameters['role'];
+          if (role == 'teacher') {
+            return const SizedBox();
+          } else if (role == 'student') {
+            return const SizedBox();
+          } else {
+            return const SizedBox();
+          }
         },
       ),
       GoRoute(
@@ -48,10 +51,17 @@ final routerProvider = Provider<GoRouter>((ref) {
             const LoadingScreen(),
       ),
       GoRoute(
+        path: '/verification',
+        builder: (BuildContext context, GoRouterState state) {
+          final email = state.uri.queryParameters['email']!;
+          final decodedEmail = Uri.decodeComponent(email);
+          return VerificationScreen(email: decodedEmail);
+        },
+      ),
+      GoRoute(
         path: '/error',
         builder: (BuildContext context, GoRouterState state) {
-          final errorMessage =
-              state.uri.queryParameters['message'] ?? 'Unknown error';
+          final errorMessage = state.uri.queryParameters['message']!;
           final decodedErrorMessage = Uri.decodeComponent(errorMessage);
           return AppErrorScreen(errorMessage: decodedErrorMessage);
         },
@@ -62,30 +72,28 @@ final routerProvider = Provider<GoRouter>((ref) {
       final isBoarded = ref.watch(onboardingProvider);
       final currentPath = state.fullPath;
 
-      if (authState.isLoading) {
-        return '/loading';
-      } else if (authState.errorMessage != null) {
-        final errorMessage = Uri.encodeComponent(authState.errorMessage!);
-        return '/error?message=$errorMessage';
-      } else if (authState.user == null) {
-        if (!isBoarded) {
-          return '/onboarding';
-        } else if (currentPath == '/login/teacher' ||
-            currentPath == '/login/student') {
-          return null;
-        } else {
-          return '/login';
-        }
+      if (isBoarded) {
+        return authState.when(
+          authenticated: (user) => '/dashboard/${user.role.name}',
+          verification: (email) {
+            final encodedEmail = Uri.encodeComponent(email);
+            return '/verification?email=$encodedEmail';
+          },
+          failure: (message) {
+            final encodedMessage = Uri.encodeComponent(message);
+            return '/error?message=$encodedMessage';
+          },
+          loading: () => '/loading',
+          unauthenticated: () {
+            if (currentPath == '/login/teacher' ||
+                currentPath == '/login/student') {
+              return null;
+            }
+            return '/login';
+          },
+        );
       } else {
-        if (currentPath == '/' ||
-            currentPath == '/login' ||
-            currentPath == '/login/teacher' ||
-            currentPath == '/login/student' ||
-            currentPath == '/onboarding') {
-          return '/dashboard';
-        } else {
-          return null;
-        }
+        return '/onboarding';
       }
     },
   );

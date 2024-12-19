@@ -12,7 +12,8 @@ _$StudentImpl _$$StudentImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       name: json['name'] as String,
       studentId: (json['studentId'] as num).toInt(),
-      role: json['role'] as String? ?? 'student',
+      role: $enumDecodeNullable(_$UserRoleEnumMap, json['role']) ??
+          UserRole.student,
       $type: json['runtimeType'] as String?,
     );
 
@@ -22,16 +23,22 @@ Map<String, dynamic> _$$StudentImplToJson(_$StudentImpl instance) =>
       'email': instance.email,
       'name': instance.name,
       'studentId': instance.studentId,
-      'role': instance.role,
+      'role': _$UserRoleEnumMap[instance.role]!,
       'runtimeType': instance.$type,
     };
+
+const _$UserRoleEnumMap = {
+  UserRole.student: 'student',
+  UserRole.teacher: 'teacher',
+};
 
 _$TeacherImpl _$$TeacherImplFromJson(Map<String, dynamic> json) =>
     _$TeacherImpl(
       id: json['id'] as String,
       email: json['email'] as String,
       name: json['name'] as String,
-      role: json['role'] as String? ?? 'teacher',
+      role: $enumDecodeNullable(_$UserRoleEnumMap, json['role']) ??
+          UserRole.teacher,
       $type: json['runtimeType'] as String?,
     );
 
@@ -40,6 +47,6 @@ Map<String, dynamic> _$$TeacherImplToJson(_$TeacherImpl instance) =>
       'id': instance.id,
       'email': instance.email,
       'name': instance.name,
-      'role': instance.role,
+      'role': _$UserRoleEnumMap[instance.role]!,
       'runtimeType': instance.$type,
     };

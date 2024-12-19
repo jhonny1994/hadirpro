@@ -35,7 +35,7 @@ class _StudentAuthScreenState extends ConsumerState<StudentAuthScreen> {
     if (_formKey.currentState!.validate()) {
       final authNotifier = ref.read(authProvider.notifier);
       await authNotifier.signIn(
-        _emailController.text,
+        _emailController.text.trim(),
         _passwordController.text,
       );
     }
@@ -45,9 +45,9 @@ class _StudentAuthScreenState extends ConsumerState<StudentAuthScreen> {
     if (_formKey.currentState!.validate()) {
       final authNotifier = ref.read(authProvider.notifier);
       await authNotifier.signUpStudent(
-        _emailController.text,
+        _emailController.text.trim(),
         _passwordController.text,
-        _nameController.text,
+        _nameController.text.trim(),
         int.parse(_studentIdController.text),
       );
     }
@@ -56,24 +56,6 @@ class _StudentAuthScreenState extends ConsumerState<StudentAuthScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = ref.watch(themeProvider) == ThemeMode.dark;
-    final auth = ref.watch(authProvider);
-
-    if (auth.isLoading) {
-      return const LoadingScreen();
-    }
-
-    if (auth.errorMessage != null && auth.errorMessage!.isNotEmpty) {
-      WidgetsBinding.instance.addPostFrameCallback(
-        (timeStamp) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(auth.errorMessage!),
-              backgroundColor: Theme.of(context).colorScheme.error,
-            ),
-          );
-        },
-      );
-    }
 
     final authOutlineInputBorder = OutlineInputBorder(
       borderSide: BorderSide(
@@ -95,7 +77,10 @@ class _StudentAuthScreenState extends ConsumerState<StudentAuthScreen> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
           child: Column(
             children: [
               const Spacer(flex: 2),
@@ -207,9 +192,7 @@ class _StudentAuthScreenState extends ConsumerState<StudentAuthScreen> {
                     ),
                     const SizedBox(height: 32),
                     FilledButton(
-                      onPressed: auth.isLoading
-                          ? null
-                          : (isSignUp ? _handleSignUp : _handleSignIn),
+                      onPressed: (isSignUp ? _handleSignUp : _handleSignIn),
                       style: FilledButton.styleFrom(
                         elevation: 0,
                         minimumSize: const Size(double.infinity, 48),

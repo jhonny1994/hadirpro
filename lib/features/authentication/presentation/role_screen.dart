@@ -11,8 +11,8 @@ class RoleScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 8,
-            vertical: 16,
+            horizontal: 16,
+            vertical: 8,
           ),
           child: Column(
             children: [
@@ -49,8 +49,8 @@ class RoleScreen extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 16,
+                        horizontal: 16,
+                        vertical: 8,
                       ),
                       child: FilledButton.tonal(
                         onPressed: () async => context.push('/login/teacher'),
@@ -67,8 +67,8 @@ class RoleScreen extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 16,
+                        horizontal: 16,
+                        vertical: 8,
                       ),
                       child: FilledButton(
                         onPressed: () async => context.push('/login/student'),

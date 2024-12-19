@@ -10,8 +10,8 @@ class LoadingScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 8,
-            vertical: 16,
+            horizontal: 16,
+            vertical: 8,
           ),
           child: Column(
             children: [
