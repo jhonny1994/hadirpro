@@ -2,52 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hadirpro/features/onboarding/domain/onboarding_data_model.dart';
 import 'package:hadirpro/features/onboarding/providers/onboarding_provider.dart';
-
-const onboardingDataList = [
-  OnboardingData(
-    illustration: 'assets/png/1.png',
-    title: 'Welcome to HadirPro',
-    text: 'Track attendance efficiently for your classes.',
-  ),
-  OnboardingData(
-    illustration: 'assets/png/2.png',
-    title: 'User Authentication',
-    text: 'Log in as a teacher or student to access your dashboard.',
-  ),
-  OnboardingData(
-    illustration: 'assets/png/3.png',
-    title: 'Attendance Marking',
-    text: 'Easily mark attendance with just a few taps.',
-  ),
-  OnboardingData(
-    illustration: 'assets/png/4.png',
-    title: 'Dashboard Overview',
-    text: 'Get a quick overview of your classes and attendance.',
-  ),
-];
+import 'package:hadirpro/features/shared/localization/generated/l10n.dart';
 
 class DotIndicator extends StatelessWidget {
   const DotIndicator({
     super.key,
     this.isActive = false,
-    this.activeColor = const Color(0xFF22A45D),
-    this.inActiveColor = const Color(0xFF868686),
   });
   final bool isActive;
-
-  final Color activeColor;
-  final Color inActiveColor;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 250),
-      margin: const EdgeInsets.symmetric(horizontal: 16 / 2),
-      height: 5,
-      width: 8,
+      margin: const EdgeInsets.symmetric(horizontal: 4),
+      height: 12,
+      width: 12,
       decoration: BoxDecoration(
-        color: isActive ? activeColor : inActiveColor.withOpacity(0.25),
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        color: isActive
+            ? Theme.of(context).colorScheme.primary
+            : Theme.of(context).colorScheme.primary.withValues(alpha: 0.25),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
       ),
     );
   }
@@ -144,7 +119,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
             const Spacer(flex: 2),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ElevatedButton(
+              child: FilledButton(
                 onPressed: () async {
                   if (currentPage != onboardingDataList.length - 1) {
                     await _pageController.nextPage(
@@ -155,9 +130,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     await onboardingNotifier.completeOnboarding();
                   }
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF22A45D),
-                  foregroundColor: Colors.white,
+                style: FilledButton.styleFrom(
                   minimumSize: const Size(double.infinity, 48),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
@@ -165,8 +138,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 ),
                 child: Text(
                   currentPage != onboardingDataList.length - 1
-                      ? 'Next'
-                      : 'Get Started',
+                      ? S.of(context).next
+                      : S.of(context).getStarted,
                 ),
               ),
             ),
