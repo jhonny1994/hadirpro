@@ -1,0 +1,5 @@
+name: hadirPro
+
+packages:
+  - apps/**
+  - packages/**
