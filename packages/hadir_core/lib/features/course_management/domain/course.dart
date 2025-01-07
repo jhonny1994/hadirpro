@@ -10,7 +10,8 @@ class Course with _$Course {
     required String name,
     required String description,
     required String teacherId,
-    required DateTime createdAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _Course;
 
   factory Course.fromJson(Map<String, dynamic> json) => _$CourseFromJson(json);

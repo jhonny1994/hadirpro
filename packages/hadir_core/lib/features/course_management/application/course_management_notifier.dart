@@ -82,9 +82,19 @@ class CourseManagment {
     CourseEnrollement courseEnrollement,
   ) async {
     try {
-      await _client
-          .from('course_enrollments')
-          .insert(courseEnrollement.toJson());
+      final existingEnrollment = await _client
+          .from('enrollments')
+          .select()
+          .eq('course_id', courseEnrollement.courseId)
+          .eq('student_id', courseEnrollement.studentId)
+          .maybeSingle();
+
+      if (existingEnrollment != null) {
+        return left(
+          const Failure('Student is already enrolled in this course.'),
+        );
+      }
+      await _client.from('enrollments').insert(courseEnrollement.toJson());
       return right(const Success('Joined course successfully.'));
     } on PostgrestException catch (e) {
       return left(Failure(e.message));
@@ -96,7 +106,7 @@ class CourseManagment {
   ) async {
     try {
       await _client
-          .from('course_enrollments')
+          .from('enrollments')
           .delete()
           .eq('course_id', courseEnrollement.courseId)
           .eq('student_id', courseEnrollement.studentId);
@@ -110,9 +120,10 @@ class CourseManagment {
     String studentId,
   ) async {
     try {
-      final courseData = await _client.from('course_enrollments').select('''
-      courses:courses(*)
-      ''').eq('student_id', studentId);
+      final courseData = await _client
+          .from('enrollments')
+          .select('courses(*)')
+          .eq('student_id', studentId);
       return right(courseData.map(Course.fromJson).toList());
     } on PostgrestException catch (e) {
       return left(Failure(e.message));
@@ -123,10 +134,18 @@ class CourseManagment {
     String courseId,
   ) async {
     try {
-      final courseData = await _client.from('course_enrollments').select('''
-      profiles:profiles(*)
-      ''').eq('course_id', courseId);
-      return right(courseData.map(Profile.fromJson).toList());
+      final enrollmentData = await _client
+          .from('enrollments')
+          .select('profiles(*)')
+          .eq('course_id', courseId);
+
+      final students = enrollmentData
+          .map(
+            (data) =>
+                Profile.fromJson(data['profiles'] as Map<String, dynamic>),
+          )
+          .toList();
+      return right(students);
     } on PostgrestException catch (e) {
       return left(Failure(e.message));
     }

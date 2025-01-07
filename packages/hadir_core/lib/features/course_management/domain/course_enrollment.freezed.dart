@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'course_enrollement.dart';
+part of 'course_enrollment.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -23,7 +23,8 @@ mixin _$CourseEnrollement {
   String? get id => throw _privateConstructorUsedError;
   String get courseId => throw _privateConstructorUsedError;
   String get studentId => throw _privateConstructorUsedError;
-  DateTime get enrolledAt => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this CourseEnrollement to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +43,11 @@ abstract class $CourseEnrollementCopyWith<$Res> {
       _$CourseEnrollementCopyWithImpl<$Res, CourseEnrollement>;
   @useResult
   $Res call(
-      {String? id, String courseId, String studentId, DateTime enrolledAt});
+      {String? id,
+      String courseId,
+      String studentId,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -63,7 +68,8 @@ class _$CourseEnrollementCopyWithImpl<$Res, $Val extends CourseEnrollement>
     Object? id = freezed,
     Object? courseId = null,
     Object? studentId = null,
-    Object? enrolledAt = null,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -78,10 +84,14 @@ class _$CourseEnrollementCopyWithImpl<$Res, $Val extends CourseEnrollement>
           ? _value.studentId
           : studentId // ignore: cast_nullable_to_non_nullable
               as String,
-      enrolledAt: null == enrolledAt
-          ? _value.enrolledAt
-          : enrolledAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -95,7 +105,11 @@ abstract class _$$CourseEnrollementImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id, String courseId, String studentId, DateTime enrolledAt});
+      {String? id,
+      String courseId,
+      String studentId,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -114,7 +128,8 @@ class __$$CourseEnrollementImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? courseId = null,
     Object? studentId = null,
-    Object? enrolledAt = null,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$CourseEnrollementImpl(
       id: freezed == id
@@ -129,10 +144,14 @@ class __$$CourseEnrollementImplCopyWithImpl<$Res>
           ? _value.studentId
           : studentId // ignore: cast_nullable_to_non_nullable
               as String,
-      enrolledAt: null == enrolledAt
-          ? _value.enrolledAt
-          : enrolledAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -144,7 +163,8 @@ class _$CourseEnrollementImpl implements _CourseEnrollement {
       {this.id,
       required this.courseId,
       required this.studentId,
-      required this.enrolledAt});
+      this.createdAt,
+      this.updatedAt});
 
   factory _$CourseEnrollementImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseEnrollementImplFromJson(json);
@@ -156,11 +176,13 @@ class _$CourseEnrollementImpl implements _CourseEnrollement {
   @override
   final String studentId;
   @override
-  final DateTime enrolledAt;
+  final DateTime? createdAt;
+  @override
+  final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'CourseEnrollement(id: $id, courseId: $courseId, studentId: $studentId, enrolledAt: $enrolledAt)';
+    return 'CourseEnrollement(id: $id, courseId: $courseId, studentId: $studentId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -173,14 +195,16 @@ class _$CourseEnrollementImpl implements _CourseEnrollement {
                 other.courseId == courseId) &&
             (identical(other.studentId, studentId) ||
                 other.studentId == studentId) &&
-            (identical(other.enrolledAt, enrolledAt) ||
-                other.enrolledAt == enrolledAt));
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, courseId, studentId, enrolledAt);
+      Object.hash(runtimeType, id, courseId, studentId, createdAt, updatedAt);
 
   /// Create a copy of CourseEnrollement
   /// with the given fields replaced by the non-null parameter values.
@@ -204,7 +228,8 @@ abstract class _CourseEnrollement implements CourseEnrollement {
       {final String? id,
       required final String courseId,
       required final String studentId,
-      required final DateTime enrolledAt}) = _$CourseEnrollementImpl;
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$CourseEnrollementImpl;
 
   factory _CourseEnrollement.fromJson(Map<String, dynamic> json) =
       _$CourseEnrollementImpl.fromJson;
@@ -216,7 +241,9 @@ abstract class _CourseEnrollement implements CourseEnrollement {
   @override
   String get studentId;
   @override
-  DateTime get enrolledAt;
+  DateTime? get createdAt;
+  @override
+  DateTime? get updatedAt;
 
   /// Create a copy of CourseEnrollement
   /// with the given fields replaced by the non-null parameter values.

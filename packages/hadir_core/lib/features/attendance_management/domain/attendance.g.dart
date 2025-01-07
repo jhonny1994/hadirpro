@@ -1,16 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'course.dart';
+part of 'attendance.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$CourseImpl _$$CourseImplFromJson(Map<String, dynamic> json) => _$CourseImpl(
+_$CourseAttendanceImpl _$$CourseAttendanceImplFromJson(
+        Map<String, dynamic> json) =>
+    _$CourseAttendanceImpl(
       id: json['id'] as String?,
-      name: json['name'] as String,
-      description: json['description'] as String,
-      teacherId: json['teacherId'] as String,
+      sessionId: json['sessionId'] as String,
+      studentId: json['studentId'] as String,
+      present: json['present'] as bool? ?? true,
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
@@ -19,12 +21,13 @@ _$CourseImpl _$$CourseImplFromJson(Map<String, dynamic> json) => _$CourseImpl(
           : DateTime.parse(json['updatedAt'] as String),
     );
 
-Map<String, dynamic> _$$CourseImplToJson(_$CourseImpl instance) =>
+Map<String, dynamic> _$$CourseAttendanceImplToJson(
+        _$CourseAttendanceImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'name': instance.name,
-      'description': instance.description,
-      'teacherId': instance.teacherId,
+      'sessionId': instance.sessionId,
+      'studentId': instance.studentId,
+      'present': instance.present,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
     };

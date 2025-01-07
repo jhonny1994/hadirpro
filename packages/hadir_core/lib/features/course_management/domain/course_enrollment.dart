@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'course_enrollement.freezed.dart';
-part 'course_enrollement.g.dart';
+part 'course_enrollment.freezed.dart';
+part 'course_enrollment.g.dart';
 
 @freezed
 class CourseEnrollement with _$CourseEnrollement {
@@ -8,7 +8,8 @@ class CourseEnrollement with _$CourseEnrollement {
     String? id,
     required String courseId,
     required String studentId,
-    required DateTime enrolledAt,
+    DateTime? createdAt,
+    DateTime? updatedAt,
   }) = _CourseEnrollement;
 
   factory CourseEnrollement.fromJson(Map<String, dynamic> json) =>

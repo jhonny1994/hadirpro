@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'course.dart';
+part of 'attendance.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,61 +14,63 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Course _$CourseFromJson(Map<String, dynamic> json) {
-  return _Course.fromJson(json);
+CourseAttendance _$CourseAttendanceFromJson(Map<String, dynamic> json) {
+  return _CourseAttendance.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Course {
+mixin _$CourseAttendance {
   String? get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
-  String get teacherId => throw _privateConstructorUsedError;
+  String get sessionId => throw _privateConstructorUsedError;
+  String get studentId => throw _privateConstructorUsedError;
+  bool get present => throw _privateConstructorUsedError;
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this Course to a JSON map.
+  /// Serializes this CourseAttendance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Course
+  /// Create a copy of CourseAttendance
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $CourseCopyWith<Course> get copyWith => throw _privateConstructorUsedError;
+  $CourseAttendanceCopyWith<CourseAttendance> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CourseCopyWith<$Res> {
-  factory $CourseCopyWith(Course value, $Res Function(Course) then) =
-      _$CourseCopyWithImpl<$Res, Course>;
+abstract class $CourseAttendanceCopyWith<$Res> {
+  factory $CourseAttendanceCopyWith(
+          CourseAttendance value, $Res Function(CourseAttendance) then) =
+      _$CourseAttendanceCopyWithImpl<$Res, CourseAttendance>;
   @useResult
   $Res call(
       {String? id,
-      String name,
-      String description,
-      String teacherId,
+      String sessionId,
+      String studentId,
+      bool present,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
 
 /// @nodoc
-class _$CourseCopyWithImpl<$Res, $Val extends Course>
-    implements $CourseCopyWith<$Res> {
-  _$CourseCopyWithImpl(this._value, this._then);
+class _$CourseAttendanceCopyWithImpl<$Res, $Val extends CourseAttendance>
+    implements $CourseAttendanceCopyWith<$Res> {
+  _$CourseAttendanceCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Course
+  /// Create a copy of CourseAttendance
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = null,
-    Object? description = null,
-    Object? teacherId = null,
+    Object? sessionId = null,
+    Object? studentId = null,
+    Object? present = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -77,18 +79,18 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
               as String,
-      teacherId: null == teacherId
-          ? _value.teacherId
-          : teacherId // ignore: cast_nullable_to_non_nullable
-              as String,
+      present: null == present
+          ? _value.present
+          : present // ignore: cast_nullable_to_non_nullable
+              as bool,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -102,58 +104,59 @@ class _$CourseCopyWithImpl<$Res, $Val extends Course>
 }
 
 /// @nodoc
-abstract class _$$CourseImplCopyWith<$Res> implements $CourseCopyWith<$Res> {
-  factory _$$CourseImplCopyWith(
-          _$CourseImpl value, $Res Function(_$CourseImpl) then) =
-      __$$CourseImplCopyWithImpl<$Res>;
+abstract class _$$CourseAttendanceImplCopyWith<$Res>
+    implements $CourseAttendanceCopyWith<$Res> {
+  factory _$$CourseAttendanceImplCopyWith(_$CourseAttendanceImpl value,
+          $Res Function(_$CourseAttendanceImpl) then) =
+      __$$CourseAttendanceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String? id,
-      String name,
-      String description,
-      String teacherId,
+      String sessionId,
+      String studentId,
+      bool present,
       DateTime? createdAt,
       DateTime? updatedAt});
 }
 
 /// @nodoc
-class __$$CourseImplCopyWithImpl<$Res>
-    extends _$CourseCopyWithImpl<$Res, _$CourseImpl>
-    implements _$$CourseImplCopyWith<$Res> {
-  __$$CourseImplCopyWithImpl(
-      _$CourseImpl _value, $Res Function(_$CourseImpl) _then)
+class __$$CourseAttendanceImplCopyWithImpl<$Res>
+    extends _$CourseAttendanceCopyWithImpl<$Res, _$CourseAttendanceImpl>
+    implements _$$CourseAttendanceImplCopyWith<$Res> {
+  __$$CourseAttendanceImplCopyWithImpl(_$CourseAttendanceImpl _value,
+      $Res Function(_$CourseAttendanceImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Course
+  /// Create a copy of CourseAttendance
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
-    Object? name = null,
-    Object? description = null,
-    Object? teacherId = null,
+    Object? sessionId = null,
+    Object? studentId = null,
+    Object? present = null,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_$CourseImpl(
+    return _then(_$CourseAttendanceImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
+      studentId: null == studentId
+          ? _value.studentId
+          : studentId // ignore: cast_nullable_to_non_nullable
               as String,
-      teacherId: null == teacherId
-          ? _value.teacherId
-          : teacherId // ignore: cast_nullable_to_non_nullable
-              as String,
+      present: null == present
+          ? _value.present
+          : present // ignore: cast_nullable_to_non_nullable
+              as bool,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -168,26 +171,27 @@ class __$$CourseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$CourseImpl implements _Course {
-  const _$CourseImpl(
+class _$CourseAttendanceImpl implements _CourseAttendance {
+  const _$CourseAttendanceImpl(
       {this.id,
-      required this.name,
-      required this.description,
-      required this.teacherId,
+      required this.sessionId,
+      required this.studentId,
+      this.present = true,
       this.createdAt,
       this.updatedAt});
 
-  factory _$CourseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CourseImplFromJson(json);
+  factory _$CourseAttendanceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CourseAttendanceImplFromJson(json);
 
   @override
   final String? id;
   @override
-  final String name;
+  final String sessionId;
   @override
-  final String description;
+  final String studentId;
   @override
-  final String teacherId;
+  @JsonKey()
+  final bool present;
   @override
   final DateTime? createdAt;
   @override
@@ -195,20 +199,20 @@ class _$CourseImpl implements _Course {
 
   @override
   String toString() {
-    return 'Course(id: $id, name: $name, description: $description, teacherId: $teacherId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'CourseAttendance(id: $id, sessionId: $sessionId, studentId: $studentId, present: $present, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CourseImpl &&
+            other is _$CourseAttendanceImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.teacherId, teacherId) ||
-                other.teacherId == teacherId) &&
+            (identical(other.sessionId, sessionId) ||
+                other.sessionId == sessionId) &&
+            (identical(other.studentId, studentId) ||
+                other.studentId == studentId) &&
+            (identical(other.present, present) || other.present == present) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -218,52 +222,54 @@ class _$CourseImpl implements _Course {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, description, teacherId, createdAt, updatedAt);
+      runtimeType, id, sessionId, studentId, present, createdAt, updatedAt);
 
-  /// Create a copy of Course
+  /// Create a copy of CourseAttendance
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CourseImplCopyWith<_$CourseImpl> get copyWith =>
-      __$$CourseImplCopyWithImpl<_$CourseImpl>(this, _$identity);
+  _$$CourseAttendanceImplCopyWith<_$CourseAttendanceImpl> get copyWith =>
+      __$$CourseAttendanceImplCopyWithImpl<_$CourseAttendanceImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CourseImplToJson(
+    return _$$CourseAttendanceImplToJson(
       this,
     );
   }
 }
 
-abstract class _Course implements Course {
-  const factory _Course(
+abstract class _CourseAttendance implements CourseAttendance {
+  const factory _CourseAttendance(
       {final String? id,
-      required final String name,
-      required final String description,
-      required final String teacherId,
+      required final String sessionId,
+      required final String studentId,
+      final bool present,
       final DateTime? createdAt,
-      final DateTime? updatedAt}) = _$CourseImpl;
+      final DateTime? updatedAt}) = _$CourseAttendanceImpl;
 
-  factory _Course.fromJson(Map<String, dynamic> json) = _$CourseImpl.fromJson;
+  factory _CourseAttendance.fromJson(Map<String, dynamic> json) =
+      _$CourseAttendanceImpl.fromJson;
 
   @override
   String? get id;
   @override
-  String get name;
+  String get sessionId;
   @override
-  String get description;
+  String get studentId;
   @override
-  String get teacherId;
+  bool get present;
   @override
   DateTime? get createdAt;
   @override
   DateTime? get updatedAt;
 
-  /// Create a copy of Course
+  /// Create a copy of CourseAttendance
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CourseImplCopyWith<_$CourseImpl> get copyWith =>
+  _$$CourseAttendanceImplCopyWith<_$CourseAttendanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

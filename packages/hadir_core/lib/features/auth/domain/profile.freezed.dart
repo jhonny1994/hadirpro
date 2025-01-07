@@ -25,6 +25,8 @@ mixin _$Profile {
   String get email => throw _privateConstructorUsedError;
   Role get role => throw _privateConstructorUsedError;
   String? get studentId => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Profile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +47,9 @@ abstract class $ProfileCopyWith<$Res> {
       String fullName,
       String email,
       Role role,
-      String? studentId});
+      String? studentId,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -68,6 +72,8 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? email = null,
     Object? role = null,
     Object? studentId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -90,6 +96,14 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.studentId
           : studentId // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -106,7 +120,9 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       String fullName,
       String email,
       Role role,
-      String? studentId});
+      String? studentId,
+      DateTime? createdAt,
+      DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -127,28 +143,38 @@ class __$$ProfileImplCopyWithImpl<$Res>
     Object? email = null,
     Object? role = null,
     Object? studentId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
   }) {
     return _then(_$ProfileImpl(
-      freezed == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      null == fullName
+      fullName: null == fullName
           ? _value.fullName
           : fullName // ignore: cast_nullable_to_non_nullable
               as String,
-      null == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      null == role
+      role: null == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as Role,
-      freezed == studentId
+      studentId: freezed == studentId
           ? _value.studentId
           : studentId // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -157,7 +183,13 @@ class __$$ProfileImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProfileImpl implements _Profile {
   const _$ProfileImpl(
-      this.id, this.fullName, this.email, this.role, this.studentId);
+      {this.id,
+      required this.fullName,
+      required this.email,
+      required this.role,
+      this.studentId,
+      this.createdAt,
+      this.updatedAt});
 
   factory _$ProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileImplFromJson(json);
@@ -172,10 +204,14 @@ class _$ProfileImpl implements _Profile {
   final Role role;
   @override
   final String? studentId;
+  @override
+  final DateTime? createdAt;
+  @override
+  final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'Profile(id: $id, fullName: $fullName, email: $email, role: $role, studentId: $studentId)';
+    return 'Profile(id: $id, fullName: $fullName, email: $email, role: $role, studentId: $studentId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -189,13 +225,17 @@ class _$ProfileImpl implements _Profile {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.studentId, studentId) ||
-                other.studentId == studentId));
+                other.studentId == studentId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, fullName, email, role, studentId);
+  int get hashCode => Object.hash(
+      runtimeType, id, fullName, email, role, studentId, createdAt, updatedAt);
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.
@@ -215,11 +255,13 @@ class _$ProfileImpl implements _Profile {
 
 abstract class _Profile implements Profile {
   const factory _Profile(
-      final String? id,
-      final String fullName,
-      final String email,
-      final Role role,
-      final String? studentId) = _$ProfileImpl;
+      {final String? id,
+      required final String fullName,
+      required final String email,
+      required final Role role,
+      final String? studentId,
+      final DateTime? createdAt,
+      final DateTime? updatedAt}) = _$ProfileImpl;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
 
@@ -233,6 +275,10 @@ abstract class _Profile implements Profile {
   Role get role;
   @override
   String? get studentId;
+  @override
+  DateTime? get createdAt;
+  @override
+  DateTime? get updatedAt;
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.

@@ -8,11 +8,17 @@ part of 'profile.dart';
 
 _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
     _$ProfileImpl(
-      json['id'] as String?,
-      json['fullName'] as String,
-      json['email'] as String,
-      $enumDecode(_$RoleEnumMap, json['role']),
-      json['studentId'] as String?,
+      id: json['id'] as String?,
+      fullName: json['fullName'] as String,
+      email: json['email'] as String,
+      role: $enumDecode(_$RoleEnumMap, json['role']),
+      studentId: json['studentId'] as String?,
+      createdAt: json['createdAt'] == null
+          ? null
+          : DateTime.parse(json['createdAt'] as String),
+      updatedAt: json['updatedAt'] == null
+          ? null
+          : DateTime.parse(json['updatedAt'] as String),
     );
 
 Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
@@ -22,6 +28,8 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
       'email': instance.email,
       'role': _$RoleEnumMap[instance.role]!,
       'studentId': instance.studentId,
+      'createdAt': instance.createdAt?.toIso8601String(),
+      'updatedAt': instance.updatedAt?.toIso8601String(),
     };
 
 const _$RoleEnumMap = {

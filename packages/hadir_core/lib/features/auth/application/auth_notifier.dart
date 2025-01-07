@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hadir_core/features/auth/auth.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as sp;
@@ -80,16 +82,11 @@ class AuthNotifier extends StateNotifier<AuthState> {
       await _client.auth.signUp(
         email: email,
         password: password,
-        data: role == Role.student
-            ? {
-                'role': 'student',
-                'full_name': fullName,
-                'student_id': studentId,
-              }
-            : {
-                'role': 'teacher',
-                'full_name': fullName,
-              },
+        data: {
+          'role': role == Role.student ? 'student' : 'teacher',
+          'name': fullName,
+          if (role == Role.student) 'student_id': studentId,
+        },
       );
       state = AuthState.verificationRequired(email: email);
     } on sp.AuthException catch (e) {
@@ -113,6 +110,9 @@ class AuthNotifier extends StateNotifier<AuthState> {
       await checkAuth();
     } on sp.AuthException catch (e) {
       state = AuthState.unauthenticated(message: e.message);
+    } on TimeoutException catch (_) {
+      state =
+          const AuthState.unauthenticated(message: 'Verification timed out.');
     }
   }
 }
