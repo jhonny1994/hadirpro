@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LocalizationNotifier extends StateNotifier<Locale?> {
-  LocalizationNotifier(this.prefs) : super(null) {
+class LocalizationNotifier extends StateNotifier<Locale> {
+  LocalizationNotifier(this.prefs) : super(S.delegate.supportedLocales.first) {
     _init();
   }
 
@@ -14,7 +14,7 @@ class LocalizationNotifier extends StateNotifier<Locale?> {
     if (currentLocale != null) {
       state = Locale(currentLocale);
     } else {
-      state = null;
+      state = S.delegate.supportedLocales.first;
     }
   }
 

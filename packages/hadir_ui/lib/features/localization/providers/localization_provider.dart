@@ -4,6 +4,6 @@ import 'package:hadir_ui/core/core.dart';
 import 'package:hadir_ui/features/localization/localization.dart';
 
 final localizationNotifierProvider =
-    StateNotifierProvider<LocalizationNotifier, Locale?>((ref) {
+    StateNotifierProvider<LocalizationNotifier, Locale>((ref) {
   return LocalizationNotifier(ref.read(sharedPreferencesProvider));
 });
