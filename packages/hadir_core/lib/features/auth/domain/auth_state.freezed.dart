@@ -46,29 +46,29 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticatedTeacher value) authenticatedTeacher,
-    required TResult Function(_AuthenticatedStudent value) authenticatedStudent,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_VerificationRequired value) verificationRequired,
+    required TResult Function(AuthenticatedTeacher value) authenticatedTeacher,
+    required TResult Function(AuthenticatedStudent value) authenticatedStudent,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(Loading value) loading,
+    required TResult Function(VerificationRequired value) verificationRequired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult? Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_VerificationRequired value)? verificationRequired,
+    TResult? Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult? Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(VerificationRequired value)? verificationRequired,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_VerificationRequired value)? verificationRequired,
+    TResult Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(Loading value)? loading,
+    TResult Function(VerificationRequired value)? verificationRequired,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,7 +141,7 @@ class __$$AuthenticatedTeacherImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthenticatedTeacherImpl implements _AuthenticatedTeacher {
+class _$AuthenticatedTeacherImpl implements AuthenticatedTeacher {
   const _$AuthenticatedTeacherImpl(this.profile);
 
   @override
@@ -216,11 +216,11 @@ class _$AuthenticatedTeacherImpl implements _AuthenticatedTeacher {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticatedTeacher value) authenticatedTeacher,
-    required TResult Function(_AuthenticatedStudent value) authenticatedStudent,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_VerificationRequired value) verificationRequired,
+    required TResult Function(AuthenticatedTeacher value) authenticatedTeacher,
+    required TResult Function(AuthenticatedStudent value) authenticatedStudent,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(Loading value) loading,
+    required TResult Function(VerificationRequired value) verificationRequired,
   }) {
     return authenticatedTeacher(this);
   }
@@ -228,11 +228,11 @@ class _$AuthenticatedTeacherImpl implements _AuthenticatedTeacher {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult? Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_VerificationRequired value)? verificationRequired,
+    TResult? Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult? Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(VerificationRequired value)? verificationRequired,
   }) {
     return authenticatedTeacher?.call(this);
   }
@@ -240,11 +240,11 @@ class _$AuthenticatedTeacherImpl implements _AuthenticatedTeacher {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_VerificationRequired value)? verificationRequired,
+    TResult Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(Loading value)? loading,
+    TResult Function(VerificationRequired value)? verificationRequired,
     required TResult orElse(),
   }) {
     if (authenticatedTeacher != null) {
@@ -254,8 +254,8 @@ class _$AuthenticatedTeacherImpl implements _AuthenticatedTeacher {
   }
 }
 
-abstract class _AuthenticatedTeacher implements AuthState {
-  const factory _AuthenticatedTeacher(final Profile profile) =
+abstract class AuthenticatedTeacher implements AuthState {
+  const factory AuthenticatedTeacher(final Profile profile) =
       _$AuthenticatedTeacherImpl;
 
   Profile get profile;
@@ -314,7 +314,7 @@ class __$$AuthenticatedStudentImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AuthenticatedStudentImpl implements _AuthenticatedStudent {
+class _$AuthenticatedStudentImpl implements AuthenticatedStudent {
   const _$AuthenticatedStudentImpl(this.profile);
 
   @override
@@ -389,11 +389,11 @@ class _$AuthenticatedStudentImpl implements _AuthenticatedStudent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticatedTeacher value) authenticatedTeacher,
-    required TResult Function(_AuthenticatedStudent value) authenticatedStudent,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_VerificationRequired value) verificationRequired,
+    required TResult Function(AuthenticatedTeacher value) authenticatedTeacher,
+    required TResult Function(AuthenticatedStudent value) authenticatedStudent,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(Loading value) loading,
+    required TResult Function(VerificationRequired value) verificationRequired,
   }) {
     return authenticatedStudent(this);
   }
@@ -401,11 +401,11 @@ class _$AuthenticatedStudentImpl implements _AuthenticatedStudent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult? Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_VerificationRequired value)? verificationRequired,
+    TResult? Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult? Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(VerificationRequired value)? verificationRequired,
   }) {
     return authenticatedStudent?.call(this);
   }
@@ -413,11 +413,11 @@ class _$AuthenticatedStudentImpl implements _AuthenticatedStudent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_VerificationRequired value)? verificationRequired,
+    TResult Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(Loading value)? loading,
+    TResult Function(VerificationRequired value)? verificationRequired,
     required TResult orElse(),
   }) {
     if (authenticatedStudent != null) {
@@ -427,8 +427,8 @@ class _$AuthenticatedStudentImpl implements _AuthenticatedStudent {
   }
 }
 
-abstract class _AuthenticatedStudent implements AuthState {
-  const factory _AuthenticatedStudent(final Profile profile) =
+abstract class AuthenticatedStudent implements AuthState {
+  const factory AuthenticatedStudent(final Profile profile) =
       _$AuthenticatedStudentImpl;
 
   Profile get profile;
@@ -475,7 +475,7 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UnauthenticatedImpl implements _Unauthenticated {
+class _$UnauthenticatedImpl implements Unauthenticated {
   const _$UnauthenticatedImpl({this.message});
 
   @override
@@ -549,11 +549,11 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticatedTeacher value) authenticatedTeacher,
-    required TResult Function(_AuthenticatedStudent value) authenticatedStudent,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_VerificationRequired value) verificationRequired,
+    required TResult Function(AuthenticatedTeacher value) authenticatedTeacher,
+    required TResult Function(AuthenticatedStudent value) authenticatedStudent,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(Loading value) loading,
+    required TResult Function(VerificationRequired value) verificationRequired,
   }) {
     return unauthenticated(this);
   }
@@ -561,11 +561,11 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult? Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_VerificationRequired value)? verificationRequired,
+    TResult? Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult? Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(VerificationRequired value)? verificationRequired,
   }) {
     return unauthenticated?.call(this);
   }
@@ -573,11 +573,11 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_VerificationRequired value)? verificationRequired,
+    TResult Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(Loading value)? loading,
+    TResult Function(VerificationRequired value)? verificationRequired,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -587,8 +587,8 @@ class _$UnauthenticatedImpl implements _Unauthenticated {
   }
 }
 
-abstract class _Unauthenticated implements AuthState {
-  const factory _Unauthenticated({final String? message}) =
+abstract class Unauthenticated implements AuthState {
+  const factory Unauthenticated({final String? message}) =
       _$UnauthenticatedImpl;
 
   String? get message;
@@ -621,7 +621,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
+class _$LoadingImpl implements Loading {
   const _$LoadingImpl();
 
   @override
@@ -681,11 +681,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticatedTeacher value) authenticatedTeacher,
-    required TResult Function(_AuthenticatedStudent value) authenticatedStudent,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_VerificationRequired value) verificationRequired,
+    required TResult Function(AuthenticatedTeacher value) authenticatedTeacher,
+    required TResult Function(AuthenticatedStudent value) authenticatedStudent,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(Loading value) loading,
+    required TResult Function(VerificationRequired value) verificationRequired,
   }) {
     return loading(this);
   }
@@ -693,11 +693,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult? Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_VerificationRequired value)? verificationRequired,
+    TResult? Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult? Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(VerificationRequired value)? verificationRequired,
   }) {
     return loading?.call(this);
   }
@@ -705,11 +705,11 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_VerificationRequired value)? verificationRequired,
+    TResult Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(Loading value)? loading,
+    TResult Function(VerificationRequired value)? verificationRequired,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -719,8 +719,8 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements AuthState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class Loading implements AuthState {
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -758,7 +758,7 @@ class __$$VerificationRequiredImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$VerificationRequiredImpl implements _VerificationRequired {
+class _$VerificationRequiredImpl implements VerificationRequired {
   const _$VerificationRequiredImpl({required this.email});
 
   @override
@@ -833,11 +833,11 @@ class _$VerificationRequiredImpl implements _VerificationRequired {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AuthenticatedTeacher value) authenticatedTeacher,
-    required TResult Function(_AuthenticatedStudent value) authenticatedStudent,
-    required TResult Function(_Unauthenticated value) unauthenticated,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_VerificationRequired value) verificationRequired,
+    required TResult Function(AuthenticatedTeacher value) authenticatedTeacher,
+    required TResult Function(AuthenticatedStudent value) authenticatedStudent,
+    required TResult Function(Unauthenticated value) unauthenticated,
+    required TResult Function(Loading value) loading,
+    required TResult Function(VerificationRequired value) verificationRequired,
   }) {
     return verificationRequired(this);
   }
@@ -845,11 +845,11 @@ class _$VerificationRequiredImpl implements _VerificationRequired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult? Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult? Function(_Unauthenticated value)? unauthenticated,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_VerificationRequired value)? verificationRequired,
+    TResult? Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult? Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult? Function(Unauthenticated value)? unauthenticated,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(VerificationRequired value)? verificationRequired,
   }) {
     return verificationRequired?.call(this);
   }
@@ -857,11 +857,11 @@ class _$VerificationRequiredImpl implements _VerificationRequired {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthenticatedTeacher value)? authenticatedTeacher,
-    TResult Function(_AuthenticatedStudent value)? authenticatedStudent,
-    TResult Function(_Unauthenticated value)? unauthenticated,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_VerificationRequired value)? verificationRequired,
+    TResult Function(AuthenticatedTeacher value)? authenticatedTeacher,
+    TResult Function(AuthenticatedStudent value)? authenticatedStudent,
+    TResult Function(Unauthenticated value)? unauthenticated,
+    TResult Function(Loading value)? loading,
+    TResult Function(VerificationRequired value)? verificationRequired,
     required TResult orElse(),
   }) {
     if (verificationRequired != null) {
@@ -871,8 +871,8 @@ class _$VerificationRequiredImpl implements _VerificationRequired {
   }
 }
 
-abstract class _VerificationRequired implements AuthState {
-  const factory _VerificationRequired({required final String email}) =
+abstract class VerificationRequired implements AuthState {
+  const factory VerificationRequired({required final String email}) =
       _$VerificationRequiredImpl;
 
   String get email;

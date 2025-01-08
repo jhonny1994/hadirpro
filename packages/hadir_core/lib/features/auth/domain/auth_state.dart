@@ -6,15 +6,15 @@ part 'auth_state.freezed.dart';
 @freezed
 class AuthState with _$AuthState {
   const factory AuthState.authenticatedTeacher(Profile profile) =
-      _AuthenticatedTeacher;
+      AuthenticatedTeacher;
 
   const factory AuthState.authenticatedStudent(Profile profile) =
-      _AuthenticatedStudent;
+      AuthenticatedStudent;
 
-  const factory AuthState.unauthenticated({String? message}) = _Unauthenticated;
+  const factory AuthState.unauthenticated({String? message}) = Unauthenticated;
 
-  const factory AuthState.loading() = _Loading;
+  const factory AuthState.loading() = Loading;
 
   const factory AuthState.verificationRequired({required String email}) =
-      _VerificationRequired;
+      VerificationRequired;
 }

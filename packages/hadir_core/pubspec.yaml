@@ -1,5 +1,5 @@
 name: hadir_core
-description: "A new Flutter package project."
+description: "The Core package for HadirPro."
 version: 0.0.1
 
 environment:

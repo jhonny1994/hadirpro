@@ -11,6 +11,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   final sp.SupabaseClient _client;
 
+  Stream<AuthState> get stream async* {
+    yield state;
+  }
+
   Future<void> checkAuth() async {
     if (state != const AuthState.loading()) {
       state = const AuthState.loading();
@@ -83,8 +87,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
         email: email,
         password: password,
         data: {
-          'role': role == Role.student ? 'student' : 'teacher',
           'name': fullName,
+          'role': role == Role.student ? 'student' : 'teacher',
           if (role == Role.student) 'student_id': studentId,
         },
       );
