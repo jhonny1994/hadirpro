@@ -3,9 +3,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hadir_ui/hadir_ui.dart';
-import 'package:hadirproteacher/core/router.dart';
-import 'package:hadirproteacher/core/theme.dart';
+import 'package:hadirproteacher/core/utils/router.dart';
+import 'package:hadirproteacher/core/utils/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sizer/sizer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:system_theme/system_theme.dart';
 import 'package:window_manager/window_manager.dart';
@@ -49,17 +50,19 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final idDarkTheme = ref.watch(dynamicThemeNotifierProvider);
     final router = ref.watch(routerProvider);
-    return FluentApp.router(
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
-        FluentLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      themeMode: idDarkTheme ? ThemeMode.dark : ThemeMode.light,
-      darkTheme: AppTheme.darkTheme,
-      theme: AppTheme.lightTheme,
+    return Sizer(
+      builder: (context, orientation, screenType) => FluentApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: const [
+          FluentLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        themeMode: idDarkTheme ? ThemeMode.dark : ThemeMode.light,
+        darkTheme: AppTheme.darkTheme,
+        theme: AppTheme.lightTheme,
+      ),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hadirproteacher/core/colors.dart';
+import 'package:hadirproteacher/core/utils/colors.dart';
 
 class AppTheme {
   static final lightTheme = FluentThemeData.light().copyWith(
