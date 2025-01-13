@@ -3,80 +3,61 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hadir_core/hadir_core.dart';
 import 'package:hadir_ui/hadir_ui.dart';
+import 'package:hadirproteacher/core/presentation/loading_screen.dart';
+import 'package:hadirproteacher/features/auth/presentation/auth_screen.dart';
+import 'package:hadirproteacher/features/auth/presentation/verify_email_screen.dart';
 import 'package:hadirproteacher/features/onboarding/presentation/onboarding_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
+    initialLocation: '/loading',
     redirect: (context, state) {
-      final state = ref.watch(authNotifierProvider);
+      final authState = ref.watch(authNotifierProvider);
       final boarded = ref.watch(onboardingNotifierProvider);
-
-      if (boarded) {
-        return state.when(
-          authenticatedTeacher: (profile) => '/teacher',
-          authenticatedStudent: (profile) => '/student',
-          unauthenticated: (message) => '/signup',
-          loading: () => '/',
-          verificationRequired: (email) => '/verify-email',
-        );
-      } else {
+      if (!boarded) {
         return '/onboarding';
       }
+      return authState.whenOrNull(
+        authenticatedTeacher: (profile) => '/teacher',
+        unauthenticated: (message) {
+          if (message != null) {
+            return '/auth?message=${Uri.encodeComponent(message)}';
+          } else {
+            return '/auth';
+          }
+        },
+        loading: () => null,
+        verificationRequired: (email) => '/verify-email?email=$email',
+      );
     },
     routes: [
-      // Public routes
-      GoRoute(
-        path: '/',
-        builder: (context, state) => const ScaffoldPage(),
-      ),
-      GoRoute(
-        path: '/signup',
-        builder: (context, state) => const ScaffoldPage(),
-      ),
       GoRoute(
         path: '/onboarding',
         builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
-        path: '/verify-email',
+        path: '/auth',
         builder: (context, state) {
-          // final email = state.extra! as String;
-          return const ScaffoldPage();
+          final errorMessage = state.uri.queryParameters['message'] != null
+              ? Uri.decodeComponent(state.uri.queryParameters['message']!)
+              : null;
+          return AuthScreen(message: errorMessage);
         },
       ),
-
-      // Teacher routes
+      GoRoute(
+        path: '/verify-email',
+        builder: (context, state) {
+          final email = state.uri.queryParameters['email']!;
+          return VerifyEmailScreen(email: email);
+        },
+      ),
       GoRoute(
         path: '/teacher',
         builder: (context, state) => const ScaffoldPage(),
       ),
       GoRoute(
-        path: '/teacher/sessions',
-        builder: (context, state) => const ScaffoldPage(),
-      ),
-      GoRoute(
-        path: '/teacher/sessions/:id',
-        builder: (context, state) {
-          // final sessionId = state.pathParameters['id'];
-          return const ScaffoldPage();
-        },
-      ),
-
-      // Student routes
-      GoRoute(
-        path: '/student',
-        builder: (context, state) => const ScaffoldPage(),
-      ),
-      GoRoute(
-        path: '/student/sessions',
-        builder: (context, state) => const ScaffoldPage(),
-      ),
-      GoRoute(
-        path: '/student/sessions/:id',
-        builder: (context, state) {
-          // final sessionId = state.pathParameters['id'];
-          return const ScaffoldPage();
-        },
+        path: '/loading',
+        builder: (context, state) => const LoadingScreen(),
       ),
     ],
   );

@@ -11,6 +11,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   final sp.SupabaseClient _client;
 
+  @override
   Stream<AuthState> get stream async* {
     yield state;
   }
@@ -45,10 +46,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
     return Profile.fromJson(profileData);
   }
 
-  Future<void> signIn(
-    String email,
-    String password,
-  ) async {
+  Future<void> signIn({
+    required String email,
+    required String password,
+  }) async {
     if (state != const AuthState.loading()) {
       state = const AuthState.loading();
     }
@@ -59,7 +60,12 @@ class AuthNotifier extends StateNotifier<AuthState> {
       );
       await checkAuth();
     } on sp.AuthException catch (e) {
-      state = AuthState.unauthenticated(message: e.message);
+      print(e.code);
+      if (e.code == 'email_not_confirmed') {
+        state = AuthState.verificationRequired(email: email);
+      } else {
+        state = AuthState.unauthenticated(message: e.message);
+      }
     }
   }
 
@@ -72,13 +78,13 @@ class AuthNotifier extends StateNotifier<AuthState> {
         const AuthState.unauthenticated(message: 'Signed out successfully.');
   }
 
-  Future<void> signUp(
-    String fullName,
-    String email,
-    String password,
-    Role role,
+  Future<void> signUp({
+    required String fullName,
+    required String email,
+    required String password,
+    required Role role,
     String? studentId,
-  ) async {
+  }) async {
     if (state != const AuthState.loading()) {
       state = const AuthState.loading();
     }
@@ -98,10 +104,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
     }
   }
 
-  Future<void> verifyEmail(
-    String email,
-    String otp,
-  ) async {
+  Future<void> verifyEmail({
+    required String email,
+    required String otp,
+  }) async {
     if (state != const AuthState.loading()) {
       state = const AuthState.loading();
     }

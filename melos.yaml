@@ -3,3 +3,15 @@ name: hadirPro
 packages:
   - apps/**
   - packages/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
+scripts:
+  build_runner:
+    run: dart run build_runner build --delete-conflicting-outputs
+    exec:
+      concurrency: 1
+    select-package:
+      depends-on: build_runner

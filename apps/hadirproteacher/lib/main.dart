@@ -21,8 +21,8 @@ void main() async {
     anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
   );
   const windowOptions = WindowOptions(
-    size: Size(800, 600),
-    minimumSize: Size(800, 600),
+    size: Size(1280, 720),
+    minimumSize: Size(1280, 720),
     title: 'HadirPro Teacher',
     alwaysOnTop: true,
     titleBarStyle: TitleBarStyle.hidden,
@@ -32,7 +32,6 @@ void main() async {
     await windowManager.focus();
   });
   final sharedPreferences = await SharedPreferences.getInstance();
-
   runApp(
     ProviderScope(
       overrides: [

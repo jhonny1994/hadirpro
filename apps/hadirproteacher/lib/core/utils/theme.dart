@@ -10,13 +10,33 @@ class AppTheme {
       brightness: Brightness.light,
       color: AppColors.textLight,
     ),
-    buttonTheme: const ButtonThemeData.all(
-      ButtonStyle(
+    buttonTheme: const ButtonThemeData(
+      defaultButtonStyle: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(AppColors.accentLight),
         foregroundColor: WidgetStatePropertyAll(AppColors.textDark),
-        elevation: WidgetStatePropertyAll(4),
+        elevation: WidgetStatePropertyAll(8),
         padding: WidgetStatePropertyAll(
-          EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        ),
+      ),
+      filledButtonStyle: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppColors.accentLight),
+        foregroundColor: WidgetStatePropertyAll(AppColors.textDark),
+        elevation: WidgetStatePropertyAll(8),
+        padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        ),
+      ),
+      iconButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStatePropertyAll(AppColors.accentDark),
+        padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        ),
+      ),
+      hyperlinkButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStatePropertyAll(AppColors.accentDark),
+        padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(vertical: 8, horizontal: 24),
         ),
       ),
     ),
@@ -35,9 +55,6 @@ class AppTheme {
       ),
       checkedIconColor: const WidgetStatePropertyAll(AppColors.textDark),
     ),
-    iconTheme: const IconThemeData(
-      color: AppColors.accentLight,
-    ),
   );
   static final darkTheme = FluentThemeData.dark().copyWith(
     accentColor: AppColors.accentDark.toAccentColor(),
@@ -47,13 +64,33 @@ class AppTheme {
       brightness: Brightness.dark,
       color: AppColors.textDark,
     ),
-    buttonTheme: const ButtonThemeData.all(
-      ButtonStyle(
+    buttonTheme: const ButtonThemeData(
+      defaultButtonStyle: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(AppColors.accentDark),
         foregroundColor: WidgetStatePropertyAll(AppColors.textDark),
-        elevation: WidgetStatePropertyAll(4),
+        elevation: WidgetStatePropertyAll(8),
         padding: WidgetStatePropertyAll(
-          EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        ),
+      ),
+      filledButtonStyle: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(AppColors.accentDark),
+        foregroundColor: WidgetStatePropertyAll(AppColors.textDark),
+        elevation: WidgetStatePropertyAll(8),
+        padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        ),
+      ),
+      iconButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStatePropertyAll(AppColors.accentLight),
+        padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+        ),
+      ),
+      hyperlinkButtonStyle: ButtonStyle(
+        foregroundColor: WidgetStatePropertyAll(AppColors.accentLight),
+        padding: WidgetStatePropertyAll(
+          EdgeInsets.symmetric(vertical: 8, horizontal: 24),
         ),
       ),
     ),
