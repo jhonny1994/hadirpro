@@ -11,6 +11,8 @@ class AuthNotifier extends StateNotifier<AuthState> {
 
   final sp.SupabaseClient _client;
 
+  String get userId => _client.auth.currentUser!.id;
+
   @override
   Stream<AuthState> get stream async* {
     yield state;
@@ -60,7 +62,6 @@ class AuthNotifier extends StateNotifier<AuthState> {
       );
       await checkAuth();
     } on sp.AuthException catch (e) {
-      print(e.code);
       if (e.code == 'email_not_confirmed') {
         state = AuthState.verificationRequired(email: email);
       } else {
@@ -74,8 +75,10 @@ class AuthNotifier extends StateNotifier<AuthState> {
       state = const AuthState.loading();
     }
     await _client.auth.signOut();
-    state =
-        const AuthState.unauthenticated(message: 'Signed out successfully.');
+    state = const AuthState.unauthenticated(
+      message: 'Signed out successfully.',
+      isSuccess: true,
+    );
   }
 
   Future<void> signUp({

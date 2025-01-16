@@ -10,21 +10,18 @@ _$CourseImpl _$$CourseImplFromJson(Map<String, dynamic> json) => _$CourseImpl(
       id: json['id'] as String?,
       name: json['name'] as String,
       description: json['description'] as String,
-      teacherId: json['teacherId'] as String,
-      createdAt: json['createdAt'] == null
+      teacherId: json['teacher_id'] as String,
+      createdAt: json['created_at'] == null
           ? null
-          : DateTime.parse(json['createdAt'] as String),
-      updatedAt: json['updatedAt'] == null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
           ? null
-          : DateTime.parse(json['updatedAt'] as String),
+          : DateTime.parse(json['updated_at'] as String),
     );
 
 Map<String, dynamic> _$$CourseImplToJson(_$CourseImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'teacherId': instance.teacherId,
-      'createdAt': instance.createdAt?.toIso8601String(),
-      'updatedAt': instance.updatedAt?.toIso8601String(),
+      'teacher_id': instance.teacherId,
     };

@@ -7,16 +7,17 @@ part 'session.g.dart';
 @freezed
 class CourseSession with _$CourseSession {
   const factory CourseSession({
-    String? id,
-    required String courseId,
-    required String teacherId,
-    required DateTime startTime,
-    required DateTime endTime,
+    @JsonKey(includeIfNull: false) String? id,
+    @JsonKey(name: 'course_id') required String courseId,
+    @JsonKey(name: 'teacher_id') required String teacherId,
+    @JsonKey(name: 'start_time') required DateTime startTime,
+    @JsonKey(name: 'end_time') required DateTime endTime,
+    @JsonKey(includeIfNull: false, name: 'courses') Course? course,
     @Default(SessionState.active) SessionState state,
-    String? currentToken,
-    DateTime? tokenExpiresAt,
-    DateTime? createdAt,
-    DateTime? updatedAt,
+    @JsonKey(name: 'current_token') String? currentToken,
+    @JsonKey(name: 'token_expires_at') DateTime? tokenExpiresAt,
+    @JsonKey(name: 'created_at', includeToJson: false) DateTime? createdAt,
+    @JsonKey(name: 'updated_at', includeToJson: false) DateTime? updatedAt,
   }) = _CourseSession;
 
   factory CourseSession.fromJson(Map<String, dynamic> json) =>

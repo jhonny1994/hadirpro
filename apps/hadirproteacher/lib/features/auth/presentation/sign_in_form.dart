@@ -1,7 +1,7 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hadir_core/hadir_core.dart';
-import 'package:hadirproteacher/core/utils/validators.dart';
+import 'package:hadirproteacher/hadir_pro_teacher.dart';
 import 'package:sizer/sizer.dart';
 
 class SignInForm extends ConsumerStatefulWidget {
@@ -65,13 +65,13 @@ class _SignInFormState extends ConsumerState<SignInForm> {
                       padding: EdgeInsets.all(2.h),
                       controller: passwordController,
                       placeholder: 'Enter your password',
-                      obscureText: isPasswordVisible,
+                      obscureText: !isPasswordVisible,
                       suffix: IconButton(
                         style: ButtonStyle(
                           iconSize: WidgetStatePropertyAll(2.5.h),
                         ),
                         icon: Icon(
-                          isPasswordVisible
+                          !isPasswordVisible
                               ? FluentIcons.red_eye
                               : FluentIcons.hide,
                         ),

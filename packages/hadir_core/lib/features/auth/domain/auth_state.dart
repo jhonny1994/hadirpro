@@ -11,7 +11,10 @@ class AuthState with _$AuthState {
   const factory AuthState.authenticatedStudent(Profile profile) =
       AuthenticatedStudent;
 
-  const factory AuthState.unauthenticated({String? message}) = Unauthenticated;
+  const factory AuthState.unauthenticated({
+    String? message,
+    @Default(false) bool isSuccess,
+  }) = Unauthenticated;
 
   const factory AuthState.loading() = Loading;
 

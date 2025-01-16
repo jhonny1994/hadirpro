@@ -9,7 +9,7 @@ part of 'profile.dart';
 _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
     _$ProfileImpl(
       id: json['id'] as String?,
-      fullName: json['fullName'] as String,
+      name: json['name'] as String,
       email: json['email'] as String,
       role: $enumDecode(_$RoleEnumMap, json['role']),
       studentId: json['studentId'] as String?,
@@ -24,7 +24,7 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'fullName': instance.fullName,
+      'name': instance.name,
       'email': instance.email,
       'role': _$RoleEnumMap[instance.role]!,
       'studentId': instance.studentId,

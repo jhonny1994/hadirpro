@@ -4,6 +4,7 @@ analyzer:
   errors:
     always_put_required_named_parameters_first: ignore
     inference_failure_on_instance_creation: ignore
+    invalid_annotation_target: ignore
     lines_longer_than_80_chars: ignore
     unnecessary_lambdas: ignore
 

@@ -21,6 +21,7 @@ class AttendanceManagement {
           .insert(session.toJson())
           .select()
           .single();
+      await _client.functions.invoke('update_token');
       return right(CourseSession.fromJson(response));
     } on PostgrestException catch (e) {
       return left(Failure(e.message));
@@ -78,9 +79,15 @@ class AttendanceManagement {
     String teacherId,
   ) async {
     try {
-      final response =
-          await _client.from('sessions').select().eq('teacher_id', teacherId);
-      return right(response.map((e) => CourseSession.fromJson(e)).toList());
+      final response = await _client.from('sessions').select('''
+      *,
+      courses (*)
+    ''').eq('teacher_id', teacherId);
+      return right(
+        response.map((e) {
+          return CourseSession.fromJson(e);
+        }).toList(),
+      );
     } on PostgrestException catch (e) {
       return left(Failure(e.message));
     }
@@ -218,9 +225,21 @@ class AttendanceManagement {
           .eq('id', sessionId)
           .single();
 
-      // Check if the token is still valid
-      final expiresAt = DateTime.parse(response['token_expires_at'] as String);
-      if (expiresAt.isBefore(DateTime.now())) {
+      // Parse the expiration time from Supabase
+      final expiresAtString = response['token_expires_at'] as String;
+
+      // Ensure the timestamp is treated as UTC by appending 'Z' if missing
+      final expiresAtUtcString = expiresAtString.endsWith('Z')
+          ? expiresAtString
+          : '${expiresAtString}Z';
+
+      final expiresAt = DateTime.parse(expiresAtUtcString);
+
+      // Get the current UTC time
+      final now = DateTime.now().toUtc();
+
+      // Compare the timestamps
+      if (expiresAt.isBefore(now)) {
         return left(const Failure('Token has expired.'));
       }
 

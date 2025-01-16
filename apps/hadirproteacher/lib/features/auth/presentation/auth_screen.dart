@@ -1,14 +1,13 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hadirproteacher/core/presentation/base_screen.dart';
-import 'package:hadirproteacher/features/auth/presentation/sign_in_form.dart';
-import 'package:hadirproteacher/features/auth/presentation/sign_up_form.dart';
+import 'package:hadirproteacher/hadir_pro_teacher.dart';
 import 'package:sizer/sizer.dart';
 
 class AuthScreen extends ConsumerStatefulWidget {
-  const AuthScreen({super.key, this.message});
+  const AuthScreen({super.key, this.message, required this.isSuccess});
 
   final String? message;
+  final bool isSuccess;
 
   @override
   ConsumerState<AuthScreen> createState() => _AuthScreenState();
@@ -23,19 +22,24 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
           context,
           builder: (context, close) {
             return InfoBar(
-              title: const Text('Failed'),
+              title: widget.isSuccess
+                  ? const Text('Success')
+                  : const Text('Failed'),
               content: Text(widget.message!),
               action: IconButton(
                 icon: const Icon(FluentIcons.clear),
                 onPressed: close,
               ),
-              severity: InfoBarSeverity.error,
+              severity: widget.isSuccess
+                  ? InfoBarSeverity.success
+                  : InfoBarSeverity.error,
             );
           },
         );
       });
     }
-    return BaseScreen(
+    return Padding(
+      padding: EdgeInsets.all(1.w),
       child: Row(
         children: [
           const SignUpForm(),

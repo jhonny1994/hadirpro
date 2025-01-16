@@ -20,7 +20,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function(Profile profile) authenticatedTeacher,
     required TResult Function(Profile profile) authenticatedStudent,
-    required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message, bool isSuccess) unauthenticated,
     required TResult Function() loading,
     required TResult Function(String email) verificationRequired,
   }) =>
@@ -29,7 +29,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Profile profile)? authenticatedTeacher,
     TResult? Function(Profile profile)? authenticatedStudent,
-    TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message, bool isSuccess)? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(String email)? verificationRequired,
   }) =>
@@ -38,7 +38,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Profile profile)? authenticatedTeacher,
     TResult Function(Profile profile)? authenticatedStudent,
-    TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message, bool isSuccess)? unauthenticated,
     TResult Function()? loading,
     TResult Function(String email)? verificationRequired,
     required TResult orElse(),
@@ -178,7 +178,7 @@ class _$AuthenticatedTeacherImpl implements AuthenticatedTeacher {
   TResult when<TResult extends Object?>({
     required TResult Function(Profile profile) authenticatedTeacher,
     required TResult Function(Profile profile) authenticatedStudent,
-    required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message, bool isSuccess) unauthenticated,
     required TResult Function() loading,
     required TResult Function(String email) verificationRequired,
   }) {
@@ -190,7 +190,7 @@ class _$AuthenticatedTeacherImpl implements AuthenticatedTeacher {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Profile profile)? authenticatedTeacher,
     TResult? Function(Profile profile)? authenticatedStudent,
-    TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message, bool isSuccess)? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(String email)? verificationRequired,
   }) {
@@ -202,7 +202,7 @@ class _$AuthenticatedTeacherImpl implements AuthenticatedTeacher {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Profile profile)? authenticatedTeacher,
     TResult Function(Profile profile)? authenticatedStudent,
-    TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message, bool isSuccess)? unauthenticated,
     TResult Function()? loading,
     TResult Function(String email)? verificationRequired,
     required TResult orElse(),
@@ -351,7 +351,7 @@ class _$AuthenticatedStudentImpl implements AuthenticatedStudent {
   TResult when<TResult extends Object?>({
     required TResult Function(Profile profile) authenticatedTeacher,
     required TResult Function(Profile profile) authenticatedStudent,
-    required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message, bool isSuccess) unauthenticated,
     required TResult Function() loading,
     required TResult Function(String email) verificationRequired,
   }) {
@@ -363,7 +363,7 @@ class _$AuthenticatedStudentImpl implements AuthenticatedStudent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Profile profile)? authenticatedTeacher,
     TResult? Function(Profile profile)? authenticatedStudent,
-    TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message, bool isSuccess)? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(String email)? verificationRequired,
   }) {
@@ -375,7 +375,7 @@ class _$AuthenticatedStudentImpl implements AuthenticatedStudent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Profile profile)? authenticatedTeacher,
     TResult Function(Profile profile)? authenticatedStudent,
-    TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message, bool isSuccess)? unauthenticated,
     TResult Function()? loading,
     TResult Function(String email)? verificationRequired,
     required TResult orElse(),
@@ -446,7 +446,7 @@ abstract class _$$UnauthenticatedImplCopyWith<$Res> {
           $Res Function(_$UnauthenticatedImpl) then) =
       __$$UnauthenticatedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? message});
+  $Res call({String? message, bool isSuccess});
 }
 
 /// @nodoc
@@ -463,12 +463,17 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? message = freezed,
+    Object? isSuccess = null,
   }) {
     return _then(_$UnauthenticatedImpl(
       message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
+      isSuccess: null == isSuccess
+          ? _value.isSuccess
+          : isSuccess // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -476,14 +481,17 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UnauthenticatedImpl implements Unauthenticated {
-  const _$UnauthenticatedImpl({this.message});
+  const _$UnauthenticatedImpl({this.message, this.isSuccess = false});
 
   @override
   final String? message;
+  @override
+  @JsonKey()
+  final bool isSuccess;
 
   @override
   String toString() {
-    return 'AuthState.unauthenticated(message: $message)';
+    return 'AuthState.unauthenticated(message: $message, isSuccess: $isSuccess)';
   }
 
   @override
@@ -491,11 +499,13 @@ class _$UnauthenticatedImpl implements Unauthenticated {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UnauthenticatedImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.isSuccess, isSuccess) ||
+                other.isSuccess == isSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, message, isSuccess);
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -511,11 +521,11 @@ class _$UnauthenticatedImpl implements Unauthenticated {
   TResult when<TResult extends Object?>({
     required TResult Function(Profile profile) authenticatedTeacher,
     required TResult Function(Profile profile) authenticatedStudent,
-    required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message, bool isSuccess) unauthenticated,
     required TResult Function() loading,
     required TResult Function(String email) verificationRequired,
   }) {
-    return unauthenticated(message);
+    return unauthenticated(message, isSuccess);
   }
 
   @override
@@ -523,11 +533,11 @@ class _$UnauthenticatedImpl implements Unauthenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Profile profile)? authenticatedTeacher,
     TResult? Function(Profile profile)? authenticatedStudent,
-    TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message, bool isSuccess)? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(String email)? verificationRequired,
   }) {
-    return unauthenticated?.call(message);
+    return unauthenticated?.call(message, isSuccess);
   }
 
   @override
@@ -535,13 +545,13 @@ class _$UnauthenticatedImpl implements Unauthenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Profile profile)? authenticatedTeacher,
     TResult Function(Profile profile)? authenticatedStudent,
-    TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message, bool isSuccess)? unauthenticated,
     TResult Function()? loading,
     TResult Function(String email)? verificationRequired,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
-      return unauthenticated(message);
+      return unauthenticated(message, isSuccess);
     }
     return orElse();
   }
@@ -588,10 +598,11 @@ class _$UnauthenticatedImpl implements Unauthenticated {
 }
 
 abstract class Unauthenticated implements AuthState {
-  const factory Unauthenticated({final String? message}) =
+  const factory Unauthenticated({final String? message, final bool isSuccess}) =
       _$UnauthenticatedImpl;
 
   String? get message;
+  bool get isSuccess;
 
   /// Create a copy of AuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -643,7 +654,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function(Profile profile) authenticatedTeacher,
     required TResult Function(Profile profile) authenticatedStudent,
-    required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message, bool isSuccess) unauthenticated,
     required TResult Function() loading,
     required TResult Function(String email) verificationRequired,
   }) {
@@ -655,7 +666,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Profile profile)? authenticatedTeacher,
     TResult? Function(Profile profile)? authenticatedStudent,
-    TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message, bool isSuccess)? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(String email)? verificationRequired,
   }) {
@@ -667,7 +678,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Profile profile)? authenticatedTeacher,
     TResult Function(Profile profile)? authenticatedStudent,
-    TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message, bool isSuccess)? unauthenticated,
     TResult Function()? loading,
     TResult Function(String email)? verificationRequired,
     required TResult orElse(),
@@ -795,7 +806,7 @@ class _$VerificationRequiredImpl implements VerificationRequired {
   TResult when<TResult extends Object?>({
     required TResult Function(Profile profile) authenticatedTeacher,
     required TResult Function(Profile profile) authenticatedStudent,
-    required TResult Function(String? message) unauthenticated,
+    required TResult Function(String? message, bool isSuccess) unauthenticated,
     required TResult Function() loading,
     required TResult Function(String email) verificationRequired,
   }) {
@@ -807,7 +818,7 @@ class _$VerificationRequiredImpl implements VerificationRequired {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(Profile profile)? authenticatedTeacher,
     TResult? Function(Profile profile)? authenticatedStudent,
-    TResult? Function(String? message)? unauthenticated,
+    TResult? Function(String? message, bool isSuccess)? unauthenticated,
     TResult? Function()? loading,
     TResult? Function(String email)? verificationRequired,
   }) {
@@ -819,7 +830,7 @@ class _$VerificationRequiredImpl implements VerificationRequired {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(Profile profile)? authenticatedTeacher,
     TResult Function(Profile profile)? authenticatedStudent,
-    TResult Function(String? message)? unauthenticated,
+    TResult Function(String? message, bool isSuccess)? unauthenticated,
     TResult Function()? loading,
     TResult Function(String email)? verificationRequired,
     required TResult orElse(),

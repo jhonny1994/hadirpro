@@ -2,10 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hadir_ui/hadir_ui.dart';
-import 'package:hadirproteacher/core/presentation/base_screen.dart';
-import 'package:hadirproteacher/core/utils/colors.dart';
-import 'package:hadirproteacher/core/utils/constants.dart';
-import 'package:hadirproteacher/features/onboarding/domain/onboarding_model.dart';
+import 'package:hadirproteacher/hadir_pro_teacher.dart';
 import 'package:sizer/sizer.dart';
 
 class OnboardingPageContent extends StatelessWidget {
@@ -98,7 +95,8 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BaseScreen(
+    return Padding(
+      padding: EdgeInsets.all(1.w),
       child: Column(
         children: [
           Expanded(

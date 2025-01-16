@@ -21,7 +21,7 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Profile {
   String? get id => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   Role get role => throw _privateConstructorUsedError;
   String? get studentId => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $ProfileCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String fullName,
+      String name,
       String email,
       Role role,
       String? studentId,
@@ -68,7 +68,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
   @override
   $Res call({
     Object? id = freezed,
-    Object? fullName = null,
+    Object? name = null,
     Object? email = null,
     Object? role = null,
     Object? studentId = freezed,
@@ -80,9 +80,9 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -117,7 +117,7 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String fullName,
+      String name,
       String email,
       Role role,
       String? studentId,
@@ -139,7 +139,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? fullName = null,
+    Object? name = null,
     Object? email = null,
     Object? role = null,
     Object? studentId = freezed,
@@ -151,9 +151,9 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
@@ -184,7 +184,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
 class _$ProfileImpl implements _Profile {
   const _$ProfileImpl(
       {this.id,
-      required this.fullName,
+      required this.name,
       required this.email,
       required this.role,
       this.studentId,
@@ -197,7 +197,7 @@ class _$ProfileImpl implements _Profile {
   @override
   final String? id;
   @override
-  final String fullName;
+  final String name;
   @override
   final String email;
   @override
@@ -211,7 +211,7 @@ class _$ProfileImpl implements _Profile {
 
   @override
   String toString() {
-    return 'Profile(id: $id, fullName: $fullName, email: $email, role: $role, studentId: $studentId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Profile(id: $id, name: $name, email: $email, role: $role, studentId: $studentId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -220,8 +220,7 @@ class _$ProfileImpl implements _Profile {
         (other.runtimeType == runtimeType &&
             other is _$ProfileImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
+            (identical(other.name, name) || other.name == name) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.role, role) || other.role == role) &&
             (identical(other.studentId, studentId) ||
@@ -235,7 +234,7 @@ class _$ProfileImpl implements _Profile {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, fullName, email, role, studentId, createdAt, updatedAt);
+      runtimeType, id, name, email, role, studentId, createdAt, updatedAt);
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.
@@ -256,7 +255,7 @@ class _$ProfileImpl implements _Profile {
 abstract class _Profile implements Profile {
   const factory _Profile(
       {final String? id,
-      required final String fullName,
+      required final String name,
       required final String email,
       required final Role role,
       final String? studentId,
@@ -268,7 +267,7 @@ abstract class _Profile implements Profile {
   @override
   String? get id;
   @override
-  String get fullName;
+  String get name;
   @override
   String get email;
   @override

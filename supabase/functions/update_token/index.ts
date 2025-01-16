@@ -63,10 +63,17 @@ Deno.serve(async () => {
       const newToken = await generateSecureToken();
       const expiresAt = new Date(Date.now() + TOKEN_EXPIRY_DURATION)
         .toISOString();
+
+      // Include all required fields in the update payload
       return {
         id: session.id,
         current_token: newToken,
         token_expires_at: expiresAt,
+        course_id: session.course_id,
+        teacher_id: session.teacher_id,
+        start_time: session.start_time,
+        end_time: session.end_time,
+        state: session.state,
       };
     });
 

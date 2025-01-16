@@ -3,8 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hadir_ui/hadir_ui.dart';
-import 'package:hadirproteacher/core/utils/router.dart';
-import 'package:hadirproteacher/core/utils/theme.dart';
+import 'package:hadirproteacher/hadir_pro_teacher.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -21,8 +20,8 @@ void main() async {
     anonKey: dotenv.env['SUPABASE_ANON_KEY'] ?? '',
   );
   const windowOptions = WindowOptions(
-    size: Size(1280, 720),
-    minimumSize: Size(1280, 720),
+    size: Size(720, 720),
+    minimumSize: Size(720, 720),
     title: 'HadirPro Teacher',
     alwaysOnTop: true,
     titleBarStyle: TitleBarStyle.hidden,

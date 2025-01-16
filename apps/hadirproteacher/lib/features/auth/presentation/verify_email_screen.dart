@@ -2,8 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart' as mt;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hadir_core/hadir_core.dart';
-import 'package:hadirproteacher/core/presentation/base_screen.dart';
-import 'package:hadirproteacher/core/utils/colors.dart';
+import 'package:hadirproteacher/hadir_pro_teacher.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
@@ -28,7 +27,8 @@ class VerifyEmailScreen extends ConsumerWidget {
       border: Border.all(color: AppColors.accentDark),
     );
 
-    return BaseScreen(
+    return Padding(
+      padding: EdgeInsets.all(1.w),
       child: mt.Material(
         child: Card(
           child: Center(

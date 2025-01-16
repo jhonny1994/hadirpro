@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hadirproteacher/core/presentation/base_screen.dart';
+import 'package:hadirproteacher/hadir_pro_teacher.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key, this.message});

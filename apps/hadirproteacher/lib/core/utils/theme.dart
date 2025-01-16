@@ -1,5 +1,5 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:hadirproteacher/core/utils/colors.dart';
+import 'package:hadirproteacher/hadir_pro_teacher.dart';
 
 class AppTheme {
   static final lightTheme = FluentThemeData.light().copyWith(
@@ -28,7 +28,6 @@ class AppTheme {
         ),
       ),
       iconButtonStyle: ButtonStyle(
-        foregroundColor: WidgetStatePropertyAll(AppColors.accentDark),
         padding: WidgetStatePropertyAll(
           EdgeInsets.symmetric(vertical: 8, horizontal: 24),
         ),

@@ -20,15 +20,26 @@ CourseSession _$CourseSessionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CourseSession {
+  @JsonKey(includeIfNull: false)
   String? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'course_id')
   String get courseId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'teacher_id')
   String get teacherId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'start_time')
   DateTime get startTime => throw _privateConstructorUsedError;
+  @JsonKey(name: 'end_time')
   DateTime get endTime => throw _privateConstructorUsedError;
+  @JsonKey(includeIfNull: false, name: 'courses')
+  Course? get course => throw _privateConstructorUsedError;
   SessionState get state => throw _privateConstructorUsedError;
+  @JsonKey(name: 'current_token')
   String? get currentToken => throw _privateConstructorUsedError;
+  @JsonKey(name: 'token_expires_at')
   DateTime? get tokenExpiresAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at', includeToJson: false)
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at', includeToJson: false)
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this CourseSession to a JSON map.
@@ -48,16 +59,19 @@ abstract class $CourseSessionCopyWith<$Res> {
       _$CourseSessionCopyWithImpl<$Res, CourseSession>;
   @useResult
   $Res call(
-      {String? id,
-      String courseId,
-      String teacherId,
-      DateTime startTime,
-      DateTime endTime,
+      {@JsonKey(includeIfNull: false) String? id,
+      @JsonKey(name: 'course_id') String courseId,
+      @JsonKey(name: 'teacher_id') String teacherId,
+      @JsonKey(name: 'start_time') DateTime startTime,
+      @JsonKey(name: 'end_time') DateTime endTime,
+      @JsonKey(includeIfNull: false, name: 'courses') Course? course,
       SessionState state,
-      String? currentToken,
-      DateTime? tokenExpiresAt,
-      DateTime? createdAt,
-      DateTime? updatedAt});
+      @JsonKey(name: 'current_token') String? currentToken,
+      @JsonKey(name: 'token_expires_at') DateTime? tokenExpiresAt,
+      @JsonKey(name: 'created_at', includeToJson: false) DateTime? createdAt,
+      @JsonKey(name: 'updated_at', includeToJson: false) DateTime? updatedAt});
+
+  $CourseCopyWith<$Res>? get course;
 }
 
 /// @nodoc
@@ -80,6 +94,7 @@ class _$CourseSessionCopyWithImpl<$Res, $Val extends CourseSession>
     Object? teacherId = null,
     Object? startTime = null,
     Object? endTime = null,
+    Object? course = freezed,
     Object? state = null,
     Object? currentToken = freezed,
     Object? tokenExpiresAt = freezed,
@@ -107,6 +122,10 @@ class _$CourseSessionCopyWithImpl<$Res, $Val extends CourseSession>
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      course: freezed == course
+          ? _value.course
+          : course // ignore: cast_nullable_to_non_nullable
+              as Course?,
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -129,6 +148,20 @@ class _$CourseSessionCopyWithImpl<$Res, $Val extends CourseSession>
               as DateTime?,
     ) as $Val);
   }
+
+  /// Create a copy of CourseSession
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CourseCopyWith<$Res>? get course {
+    if (_value.course == null) {
+      return null;
+    }
+
+    return $CourseCopyWith<$Res>(_value.course!, (value) {
+      return _then(_value.copyWith(course: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -140,16 +173,20 @@ abstract class _$$CourseSessionImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id,
-      String courseId,
-      String teacherId,
-      DateTime startTime,
-      DateTime endTime,
+      {@JsonKey(includeIfNull: false) String? id,
+      @JsonKey(name: 'course_id') String courseId,
+      @JsonKey(name: 'teacher_id') String teacherId,
+      @JsonKey(name: 'start_time') DateTime startTime,
+      @JsonKey(name: 'end_time') DateTime endTime,
+      @JsonKey(includeIfNull: false, name: 'courses') Course? course,
       SessionState state,
-      String? currentToken,
-      DateTime? tokenExpiresAt,
-      DateTime? createdAt,
-      DateTime? updatedAt});
+      @JsonKey(name: 'current_token') String? currentToken,
+      @JsonKey(name: 'token_expires_at') DateTime? tokenExpiresAt,
+      @JsonKey(name: 'created_at', includeToJson: false) DateTime? createdAt,
+      @JsonKey(name: 'updated_at', includeToJson: false) DateTime? updatedAt});
+
+  @override
+  $CourseCopyWith<$Res>? get course;
 }
 
 /// @nodoc
@@ -170,6 +207,7 @@ class __$$CourseSessionImplCopyWithImpl<$Res>
     Object? teacherId = null,
     Object? startTime = null,
     Object? endTime = null,
+    Object? course = freezed,
     Object? state = null,
     Object? currentToken = freezed,
     Object? tokenExpiresAt = freezed,
@@ -197,6 +235,10 @@ class __$$CourseSessionImplCopyWithImpl<$Res>
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      course: freezed == course
+          ? _value.course
+          : course // ignore: cast_nullable_to_non_nullable
+              as Course?,
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -225,45 +267,58 @@ class __$$CourseSessionImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CourseSessionImpl implements _CourseSession {
   const _$CourseSessionImpl(
-      {this.id,
-      required this.courseId,
-      required this.teacherId,
-      required this.startTime,
-      required this.endTime,
+      {@JsonKey(includeIfNull: false) this.id,
+      @JsonKey(name: 'course_id') required this.courseId,
+      @JsonKey(name: 'teacher_id') required this.teacherId,
+      @JsonKey(name: 'start_time') required this.startTime,
+      @JsonKey(name: 'end_time') required this.endTime,
+      @JsonKey(includeIfNull: false, name: 'courses') this.course,
       this.state = SessionState.active,
-      this.currentToken,
-      this.tokenExpiresAt,
-      this.createdAt,
-      this.updatedAt});
+      @JsonKey(name: 'current_token') this.currentToken,
+      @JsonKey(name: 'token_expires_at') this.tokenExpiresAt,
+      @JsonKey(name: 'created_at', includeToJson: false) this.createdAt,
+      @JsonKey(name: 'updated_at', includeToJson: false) this.updatedAt});
 
   factory _$CourseSessionImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseSessionImplFromJson(json);
 
   @override
+  @JsonKey(includeIfNull: false)
   final String? id;
   @override
+  @JsonKey(name: 'course_id')
   final String courseId;
   @override
+  @JsonKey(name: 'teacher_id')
   final String teacherId;
   @override
+  @JsonKey(name: 'start_time')
   final DateTime startTime;
   @override
+  @JsonKey(name: 'end_time')
   final DateTime endTime;
+  @override
+  @JsonKey(includeIfNull: false, name: 'courses')
+  final Course? course;
   @override
   @JsonKey()
   final SessionState state;
   @override
+  @JsonKey(name: 'current_token')
   final String? currentToken;
   @override
+  @JsonKey(name: 'token_expires_at')
   final DateTime? tokenExpiresAt;
   @override
+  @JsonKey(name: 'created_at', includeToJson: false)
   final DateTime? createdAt;
   @override
+  @JsonKey(name: 'updated_at', includeToJson: false)
   final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'CourseSession(id: $id, courseId: $courseId, teacherId: $teacherId, startTime: $startTime, endTime: $endTime, state: $state, currentToken: $currentToken, tokenExpiresAt: $tokenExpiresAt, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'CourseSession(id: $id, courseId: $courseId, teacherId: $teacherId, startTime: $startTime, endTime: $endTime, course: $course, state: $state, currentToken: $currentToken, tokenExpiresAt: $tokenExpiresAt, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -279,6 +334,7 @@ class _$CourseSessionImpl implements _CourseSession {
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime) &&
+            (identical(other.course, course) || other.course == course) &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.currentToken, currentToken) ||
                 other.currentToken == currentToken) &&
@@ -299,6 +355,7 @@ class _$CourseSessionImpl implements _CourseSession {
       teacherId,
       startTime,
       endTime,
+      course,
       state,
       currentToken,
       tokenExpiresAt,
@@ -323,39 +380,54 @@ class _$CourseSessionImpl implements _CourseSession {
 
 abstract class _CourseSession implements CourseSession {
   const factory _CourseSession(
-      {final String? id,
-      required final String courseId,
-      required final String teacherId,
-      required final DateTime startTime,
-      required final DateTime endTime,
+      {@JsonKey(includeIfNull: false) final String? id,
+      @JsonKey(name: 'course_id') required final String courseId,
+      @JsonKey(name: 'teacher_id') required final String teacherId,
+      @JsonKey(name: 'start_time') required final DateTime startTime,
+      @JsonKey(name: 'end_time') required final DateTime endTime,
+      @JsonKey(includeIfNull: false, name: 'courses') final Course? course,
       final SessionState state,
-      final String? currentToken,
-      final DateTime? tokenExpiresAt,
+      @JsonKey(name: 'current_token') final String? currentToken,
+      @JsonKey(name: 'token_expires_at') final DateTime? tokenExpiresAt,
+      @JsonKey(name: 'created_at', includeToJson: false)
       final DateTime? createdAt,
+      @JsonKey(name: 'updated_at', includeToJson: false)
       final DateTime? updatedAt}) = _$CourseSessionImpl;
 
   factory _CourseSession.fromJson(Map<String, dynamic> json) =
       _$CourseSessionImpl.fromJson;
 
   @override
+  @JsonKey(includeIfNull: false)
   String? get id;
   @override
+  @JsonKey(name: 'course_id')
   String get courseId;
   @override
+  @JsonKey(name: 'teacher_id')
   String get teacherId;
   @override
+  @JsonKey(name: 'start_time')
   DateTime get startTime;
   @override
+  @JsonKey(name: 'end_time')
   DateTime get endTime;
+  @override
+  @JsonKey(includeIfNull: false, name: 'courses')
+  Course? get course;
   @override
   SessionState get state;
   @override
+  @JsonKey(name: 'current_token')
   String? get currentToken;
   @override
+  @JsonKey(name: 'token_expires_at')
   DateTime? get tokenExpiresAt;
   @override
+  @JsonKey(name: 'created_at', includeToJson: false)
   DateTime? get createdAt;
   @override
+  @JsonKey(name: 'updated_at', includeToJson: false)
   DateTime? get updatedAt;
 
   /// Create a copy of CourseSession

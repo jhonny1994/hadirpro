@@ -8,7 +8,7 @@ part 'profile.g.dart';
 class Profile with _$Profile {
   const factory Profile({
     String? id,
-    required String fullName,
+    required String name,
     required String email,
     required Role role,
     String? studentId,

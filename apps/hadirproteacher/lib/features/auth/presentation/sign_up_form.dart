@@ -90,13 +90,13 @@ class _SignUpFormState extends ConsumerState<SignUpForm> {
                       padding: EdgeInsets.all(2.h),
                       controller: passwordController,
                       placeholder: 'Enter your password',
-                      obscureText: true,
+                      obscureText: !isPasswordVisible,
                       suffix: IconButton(
                         style: ButtonStyle(
                           iconSize: WidgetStatePropertyAll(2.5.h),
                         ),
                         icon: Icon(
-                          isPasswordVisible
+                          !isPasswordVisible
                               ? FluentIcons.red_eye
                               : FluentIcons.hide,
                         ),

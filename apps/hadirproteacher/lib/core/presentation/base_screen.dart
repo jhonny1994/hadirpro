@@ -2,7 +2,6 @@ import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hadir_ui/hadir_ui.dart';
-import 'package:sizer/sizer.dart';
 
 class BaseScreen extends ConsumerStatefulWidget {
   const BaseScreen({required this.child, super.key});
@@ -56,10 +55,7 @@ class _BaseScreenState extends ConsumerState<BaseScreen> {
           ],
         ),
       ),
-      content: Padding(
-        padding: EdgeInsets.all(1.w),
-        child: widget.child,
-      ),
+      content: widget.child,
     );
   }
 }

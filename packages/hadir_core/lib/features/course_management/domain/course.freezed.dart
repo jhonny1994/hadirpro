@@ -20,11 +20,15 @@ Course _$CourseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Course {
+  @JsonKey(includeToJson: false)
   String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  @JsonKey(name: 'teacher_id')
   String get teacherId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at', includeToJson: false)
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at', includeToJson: false)
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Course to a JSON map.
@@ -42,12 +46,12 @@ abstract class $CourseCopyWith<$Res> {
       _$CourseCopyWithImpl<$Res, Course>;
   @useResult
   $Res call(
-      {String? id,
+      {@JsonKey(includeToJson: false) String? id,
       String name,
       String description,
-      String teacherId,
-      DateTime? createdAt,
-      DateTime? updatedAt});
+      @JsonKey(name: 'teacher_id') String teacherId,
+      @JsonKey(name: 'created_at', includeToJson: false) DateTime? createdAt,
+      @JsonKey(name: 'updated_at', includeToJson: false) DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -109,12 +113,12 @@ abstract class _$$CourseImplCopyWith<$Res> implements $CourseCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? id,
+      {@JsonKey(includeToJson: false) String? id,
       String name,
       String description,
-      String teacherId,
-      DateTime? createdAt,
-      DateTime? updatedAt});
+      @JsonKey(name: 'teacher_id') String teacherId,
+      @JsonKey(name: 'created_at', includeToJson: false) DateTime? createdAt,
+      @JsonKey(name: 'updated_at', includeToJson: false) DateTime? updatedAt});
 }
 
 /// @nodoc
@@ -170,27 +174,31 @@ class __$$CourseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CourseImpl implements _Course {
   const _$CourseImpl(
-      {this.id,
+      {@JsonKey(includeToJson: false) this.id,
       required this.name,
       required this.description,
-      required this.teacherId,
-      this.createdAt,
-      this.updatedAt});
+      @JsonKey(name: 'teacher_id') required this.teacherId,
+      @JsonKey(name: 'created_at', includeToJson: false) this.createdAt,
+      @JsonKey(name: 'updated_at', includeToJson: false) this.updatedAt});
 
   factory _$CourseImpl.fromJson(Map<String, dynamic> json) =>
       _$$CourseImplFromJson(json);
 
   @override
+  @JsonKey(includeToJson: false)
   final String? id;
   @override
   final String name;
   @override
   final String description;
   @override
+  @JsonKey(name: 'teacher_id')
   final String teacherId;
   @override
+  @JsonKey(name: 'created_at', includeToJson: false)
   final DateTime? createdAt;
   @override
+  @JsonKey(name: 'updated_at', includeToJson: false)
   final DateTime? updatedAt;
 
   @override
@@ -238,26 +246,32 @@ class _$CourseImpl implements _Course {
 
 abstract class _Course implements Course {
   const factory _Course(
-      {final String? id,
+      {@JsonKey(includeToJson: false) final String? id,
       required final String name,
       required final String description,
-      required final String teacherId,
+      @JsonKey(name: 'teacher_id') required final String teacherId,
+      @JsonKey(name: 'created_at', includeToJson: false)
       final DateTime? createdAt,
+      @JsonKey(name: 'updated_at', includeToJson: false)
       final DateTime? updatedAt}) = _$CourseImpl;
 
   factory _Course.fromJson(Map<String, dynamic> json) = _$CourseImpl.fromJson;
 
   @override
+  @JsonKey(includeToJson: false)
   String? get id;
   @override
   String get name;
   @override
   String get description;
   @override
+  @JsonKey(name: 'teacher_id')
   String get teacherId;
   @override
+  @JsonKey(name: 'created_at', includeToJson: false)
   DateTime? get createdAt;
   @override
+  @JsonKey(name: 'updated_at', includeToJson: false)
   DateTime? get updatedAt;
 
   /// Create a copy of Course
